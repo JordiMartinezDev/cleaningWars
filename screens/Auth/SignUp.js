@@ -11,7 +11,7 @@ const SignUp = () => {
   return (
     <View>
       <Text>SignUp</Text>
-      <Button title="Login" onPress={showLoginScreen}></Button>
+      <Button title="Go to Login Screen" onPress={showLoginScreen}></Button>
     </View>
   );
 };

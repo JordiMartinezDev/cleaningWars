@@ -1,15 +1,22 @@
 import { View, Text, Button } from "react-native";
 import React from "react";
 import navigation, { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { authenticated } from "../../context/redux/slicers/authSlicer";
 
 const Login = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   function showSignUpScreen() {
     navigation.replace("SignUpScreen");
   }
   function loginAttempt() {
-    // Change context isUserAuthenticated
+    const mockAuth = true;
+
+    if (mockAuth) {
+      dispatch(authenticated("2"));
+    }
   }
 
   return (
