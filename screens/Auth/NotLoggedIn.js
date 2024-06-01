@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 import Login from "./Login";
-import SignUp from "../Auth/SignUp";
+import SignUp from "./SignUp";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-const AuthNavigator = () => {
+const NotLoggedIn = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="LoginScreen" component={Login} />
@@ -15,4 +15,4 @@ const AuthNavigator = () => {
   );
 };
 
-export default AuthNavigator;
+export default NotLoggedIn;

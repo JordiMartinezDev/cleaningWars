@@ -2,20 +2,22 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import AuthNavigator from "./screens/Auth/AuthNavigator";
-import LoggedInNavigator from "./screens/LoggedInNavigator";
+
+import { Provider } from "react-redux";
+import { store } from "./context/redux/store";
+import LoginScreen from "./components/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const isUserAuthenticated = true; // This has to be dynamically managed by Context
-
   return (
     <>
       <StatusBar />
-      <NavigationContainer>
-        {isUserAuthenticated ? <LoggedInNavigator /> : <AuthNavigator />}
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <LoginScreen />
+        </NavigationContainer>
+      </Provider>
     </>
   );
 }

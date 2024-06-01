@@ -16,7 +16,6 @@ const Login = () => {
     <View>
       <Text>Login</Text>
       <Button title="Login" onPress={loginAttempt}></Button>
-
       <Button title="Sign up" onPress={showSignUpScreen}></Button>
     </View>
   );
