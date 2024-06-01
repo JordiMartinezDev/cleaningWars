@@ -8,10 +8,15 @@ const Login = () => {
   function showSignUpScreen() {
     navigation.replace("SignUpScreen");
   }
+  function loginAttempt() {
+    // Change context isUserAuthenticated
+  }
 
   return (
     <View>
       <Text>Login</Text>
+      <Button title="Login" onPress={loginAttempt}></Button>
+
       <Button title="Sign up" onPress={showSignUpScreen}></Button>
     </View>
   );
