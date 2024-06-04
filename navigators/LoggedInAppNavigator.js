@@ -11,12 +11,12 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-const LoggedInAppNavigator = () => {
-  const userId = useSelector((state) => state.auth.userId);
-
+function TabsNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -65,6 +65,16 @@ const LoggedInAppNavigator = () => {
         }}
       />
     </Tab.Navigator>
+  );
+}
+
+const LoggedInAppNavigator = () => {
+  const userId = useSelector((state) => state.auth.userId);
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="logedInApp" component={TabsNavigator} />
+    </Stack.Navigator>
   );
 };
 
