@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import NotLoggedIn from "../screens/Auth/NotLoggedIn";
+import NotLoggedIn from "../navigators/NotLoggedIn";
 import React from "react";
-import LoggedInAppNavigator from "./LoggedInAppNavigator";
+import LoggedInAppNavigator from "../navigators/LoggedInAppNavigator";
 
 const LoginScreen = () => {
   const isUserAuthenticated = useSelector(
