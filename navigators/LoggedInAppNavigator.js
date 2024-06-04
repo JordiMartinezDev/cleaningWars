@@ -12,6 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AddTask from "../screens/modal/AddTask";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ function TabsNavigator() {
       screenOptions={{
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "gray",
+        headerShown: false,
       }}
     >
       <Tab.Screen
@@ -72,8 +74,13 @@ const LoggedInAppNavigator = () => {
   const userId = useSelector((state) => state.auth.userId);
 
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="logedInApp" component={TabsNavigator} />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="logedInApp" component={TabsNavigator} options={{}} />
+      <Stack.Screen name="addTask" component={AddTask} />
     </Stack.Navigator>
   );
 };
