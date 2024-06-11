@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Full Kitchen",
+    "points": "4",
+    "id": "0"
+  },
+  {
+    "name": "Clean dishes",
+    "points": "2",
+    "id": "0"
+  },
+  {
+    "name": "Sweep room",
+    "points": "1",
+    "id": "0"
+  },
+  {
+    "name": "Sweep House",
+    "points": "4",
+    "id": "0"
+  }
+]
