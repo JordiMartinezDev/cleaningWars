@@ -1,0 +1,18 @@
+{
+  "2024-06-14": [
+    {
+      "id": "0",
+      "name": "Cleaned dishes",
+      "points": "3",
+      "user": "myUser"
+    }
+  ],
+  "2024-06-16": [
+    {
+      "id": "0",
+      "name": "Clean entire kitchen",
+      "points": "3",
+      "user": "myUser"
+    }
+  ]
+}
