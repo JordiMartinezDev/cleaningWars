@@ -13,6 +13,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AddTask from "../screens/modal/AddTask";
+import EventDetails from "../screens/modal/EventDetails";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -80,7 +81,10 @@ const LoggedInAppNavigator = () => {
       }}
     >
       <Stack.Screen name="logedInApp" component={TabsNavigator} options={{}} />
-      <Stack.Screen name="addTask" component={AddTask} />
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
+        <Stack.Screen name="addTask" component={AddTask} />
+        <Stack.Screen name="eventDetails" component={EventDetails} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
