@@ -14,7 +14,7 @@ const Week = () => {
     return (
       <Pressable
         style={[style.pressableItem]}
-        onPress={() => navigation.navigate("addTask")}
+        onPress={() => navigation.navigate("eventDetails")}
       >
         <Text style={{ fontSize, color }}>{event.name}</Text>
       </Pressable>

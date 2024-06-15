@@ -1,4 +1,4 @@
-import { View, Text, Settings } from "react-native";
+import { View, Text, Settings, Platform } from "react-native";
 import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -80,10 +80,33 @@ const LoggedInAppNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="logedInApp" component={TabsNavigator} options={{}} />
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="addTask" component={AddTask} />
-        <Stack.Screen name="eventDetails" component={EventDetails} />
+      <Stack.Group>
+        <Stack.Screen
+          name="logedInApp"
+          component={TabsNavigator}
+          options={{}}
+        />
+      </Stack.Group>
+      <Stack.Group
+        screenOptions={{
+          presentation: "modal",
+          animation: Platform.OS === "android" ? "slide_from_bottom" : "",
+        }}
+      >
+        <Stack.Screen
+          name="addTask"
+          component={AddTask}
+          options={() => {
+            presentation: "modal";
+          }}
+        />
+        <Stack.Screen
+          name="eventDetails"
+          component={EventDetails}
+          options={() => {
+            presentation: "modal";
+          }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
