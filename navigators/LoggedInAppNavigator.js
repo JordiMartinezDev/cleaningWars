@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AddTask from "../screens/modal/AddTask";
 import EventDetails from "../screens/modal/EventDetails";
+import Header from "../components/Header";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -75,40 +76,43 @@ const LoggedInAppNavigator = () => {
   const userId = useSelector((state) => state.auth.userId);
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Group>
-        <Stack.Screen
-          name="logedInApp"
-          component={TabsNavigator}
-          options={{}}
-        />
-      </Stack.Group>
-      <Stack.Group
+    <>
+      <Header />
+      <Stack.Navigator
         screenOptions={{
-          presentation: "modal",
-          animation: Platform.OS === "android" ? "slide_from_bottom" : "",
+          headerShown: false,
         }}
       >
-        <Stack.Screen
-          name="addTask"
-          component={AddTask}
-          options={() => {
-            presentation: "modal";
+        <Stack.Group>
+          <Stack.Screen
+            name="logedInApp"
+            component={TabsNavigator}
+            options={{}}
+          />
+        </Stack.Group>
+        <Stack.Group
+          screenOptions={{
+            presentation: "modal",
+            animation: Platform.OS === "android" ? "slide_from_bottom" : "",
           }}
-        />
-        <Stack.Screen
-          name="eventDetails"
-          component={EventDetails}
-          options={() => {
-            presentation: "modal";
-          }}
-        />
-      </Stack.Group>
-    </Stack.Navigator>
+        >
+          <Stack.Screen
+            name="addTask"
+            component={AddTask}
+            options={() => {
+              presentation: "modal";
+            }}
+          />
+          <Stack.Screen
+            name="eventDetails"
+            component={EventDetails}
+            options={() => {
+              presentation: "modal";
+            }}
+          />
+        </Stack.Group>
+      </Stack.Navigator>
+    </>
   );
 };
 

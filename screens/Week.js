@@ -3,6 +3,7 @@ import React from "react";
 import { Agenda } from "react-native-calendars";
 import events from "../data/events.json";
 import { useNavigation } from "@react-navigation/native";
+import AddTaskButton from "../components/addTaskButton";
 
 const Week = () => {
   const navigation = useNavigation();
@@ -33,6 +34,7 @@ const Week = () => {
     <View style={style.container}>
       <Agenda items={events} renderItem={renderCalendarEvent} />
       {/* Agenda expects the items in a different way, not inside an array but with key value pairs where key is  date like "2022-11-25" */}
+      <AddTaskButton />
     </View>
   );
 };

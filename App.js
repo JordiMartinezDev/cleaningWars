@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { Provider } from "react-redux";
 import { store } from "./context/redux/store";
-import LoginScreen from "./components/LoginScreen";
+import LoginScreen from "./screens/Auth/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
