@@ -22,7 +22,7 @@ const Week = () => {
     );
   };
 
-  const renderEmptyDate = () => {
+  const renderEmptyData = () => {
     return (
       <View style={styles.emptyDateItem}>
         <Text>This is empty date</Text>
@@ -30,9 +30,20 @@ const Week = () => {
     );
   };
 
+  function dayChangeHandler() {
+    // set the "events" object of the week of the selected day
+  }
+
   return (
     <View style={styles.container}>
-      <Agenda items={events} renderItem={renderCalendarEvent} />
+      <Agenda
+        items={events} // we will retrieve the date
+        renderItem={renderCalendarEvent}
+        renderEmptyData={renderEmptyData}
+        onDayChange={dayChangeHandler}
+        // showOnlySelectedDayItems={false}
+        // showClosingKnob={true}
+      />
       {/* Agenda expects the items in a different way, not inside an array but with key value pairs where key is  date like "2022-11-25" */}
       <View style={styles.addTaskButton}>
         <ButtonAddTask />
