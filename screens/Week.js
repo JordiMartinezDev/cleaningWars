@@ -3,7 +3,7 @@ import React from "react";
 import { Agenda } from "react-native-calendars";
 import events from "../data/events.json";
 import { useNavigation } from "@react-navigation/native";
-import AddTaskButton from "../components/addTaskButton";
+import ButtonAddTask from "../components/ButtonAddTask";
 
 const Week = () => {
   const navigation = useNavigation();
@@ -14,7 +14,7 @@ const Week = () => {
 
     return (
       <Pressable
-        style={[style.pressableItem]}
+        style={[styles.pressableItem]}
         onPress={() => navigation.navigate("eventDetails")}
       >
         <Text style={{ fontSize, color }}>{event.name}</Text>
@@ -24,24 +24,26 @@ const Week = () => {
 
   const renderEmptyDate = () => {
     return (
-      <View style={style.emptyDateItem}>
+      <View style={styles.emptyDateItem}>
         <Text>This is empty date</Text>
       </View>
     );
   };
 
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Agenda items={events} renderItem={renderCalendarEvent} />
       {/* Agenda expects the items in a different way, not inside an array but with key value pairs where key is  date like "2022-11-25" */}
-      <AddTaskButton />
+      <View style={styles.addTaskButton}>
+        <ButtonAddTask />
+      </View>
     </View>
   );
 };
 
 export default Week;
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -57,5 +59,9 @@ const style = StyleSheet.create({
     height: 15,
     flex: 1,
     paddingTop: 30,
+  },
+  addTaskButton: {
+    justifyContent: "flex-end",
+    alignContent: "flex-end",
   },
 });
