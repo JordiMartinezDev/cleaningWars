@@ -9,8 +9,8 @@ const Week = () => {
   const navigation = useNavigation();
 
   const renderCalendarEvent = (event, isFirst) => {
-    const fontSize = isFirst ? 16 : 14;
-    const color = isFirst ? "black" : "#43515c";
+    const fontSize = isFirst ? 14 : 14;
+    const color = isFirst ? "#43515c" : "#43515c";
 
     return (
       <Pressable

@@ -13,7 +13,7 @@ const ButtonAddTask = () => {
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={addTaskHandler}>
         <View style={null}>
-          <AntDesign name="plus" size={32} color="black" />
+          <AntDesign name="plus" size={32} color="white" />
         </View>
       </Pressable>
     </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   button: {
     height: 64,
     width: 64,
-    backgroundColor: "orange",
+    backgroundColor: "#00bbf2",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,

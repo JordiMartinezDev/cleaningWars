@@ -7,7 +7,7 @@
       "user": "myUser"
     }
   ],
-  "2024-06-16": [
+  "2024-08-01": [
     {
       "id": "0",
       "name": "Clean entire kitchen",
@@ -45,7 +45,7 @@
       "user": "myUser"
     }
   ],
-  "2024-06-17": [
+  "2024-07-30": [
     {
       "id": "0",
       "name": "Clean entire kitchen",
@@ -60,7 +60,7 @@
       "user": "myUser"
     }
   ],
-  "2024-06-18": [
+  "2024-07-29": [
     {
       "id": "0",
       "name": "Clean entire kitchen",
@@ -97,5 +97,21 @@
       "points": "2",
       "user": "myUser"
     }
-  ]
+  ],
+  "2024-08-03": [
+    {
+      "id": "0",
+      "name": "Clean entire kitchen",
+      "points": "5",
+      "user": "myUser"
+    },
+
+    {
+      "id": "2",
+      "name": "Wash dishes",
+      "points": "2",
+      "user": "myUser"
+    }
+  ],
+  "2024-07-31": []
 }
