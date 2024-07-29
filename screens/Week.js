@@ -1,12 +1,25 @@
 import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Agenda } from "react-native-calendars";
 import events from "../data/events.json";
 import { useNavigation } from "@react-navigation/native";
 import ButtonAddTask from "../components/ButtonAddTask";
 
+function getStartingDate() {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth();
+  const day = new Date().getDate();
+
+  if (month < 10) month = "0" + month;
+
+  return year + "-" + month + "-" + day;
+}
+
 const Week = () => {
   const navigation = useNavigation();
+
+  const [selectedDay, setSelectedDay] = useState(getStartingDate());
+  console.log(selectedDay);
 
   const renderCalendarEvent = (event, isFirst) => {
     const fontSize = isFirst ? 14 : 14;
@@ -41,12 +54,16 @@ const Week = () => {
         renderItem={renderCalendarEvent}
         renderEmptyData={renderEmptyData}
         onDayChange={dayChangeHandler}
+        onDayPress={(day) => {
+          setSelectedDay(day.dateString);
+        }}
+
         // showOnlySelectedDayItems={false}
         // showClosingKnob={true}
       />
       {/* Agenda expects the items in a different way, not inside an array but with key value pairs where key is  date like "2022-11-25" */}
       <View style={styles.addTaskButton}>
-        <ButtonAddTask />
+        <ButtonAddTask onDay={selectedDay} />
       </View>
     </View>
   );

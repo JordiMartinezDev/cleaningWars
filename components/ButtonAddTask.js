@@ -3,7 +3,7 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const ButtonAddTask = () => {
+const ButtonAddTask = (onDay) => {
   const navigation = useNavigation();
 
   function addTaskHandler() {
