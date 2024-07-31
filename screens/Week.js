@@ -15,6 +15,8 @@ function getStartingDate() {
   return year + "-" + month + "-" + day;
 }
 
+// -------- Component -----------
+
 const Week = () => {
   const navigation = useNavigation();
 
@@ -25,14 +27,16 @@ const Week = () => {
     const fontSize = isFirst ? 14 : 14;
     const color = isFirst ? "#43515c" : "#43515c";
 
-    return (
-      <Pressable
-        style={[styles.pressableItem]}
-        onPress={() => navigation.navigate("eventDetails")}
-      >
-        <Text style={{ fontSize, color }}>{event.name}</Text>
-      </Pressable>
-    );
+    if (event.user == "myUser")
+      return (
+        <Pressable
+          style={[styles.pressableItem]}
+          onPress={() => navigation.navigate("eventDetails")}
+        >
+          <Text style={{ fontSize, color }}>{event.name}</Text>
+          <Text style={{ fontSize, color }}>{event.user}</Text>
+        </Pressable>
+      );
   };
 
   const renderEmptyData = () => {
@@ -50,7 +54,7 @@ const Week = () => {
   return (
     <View style={styles.container}>
       <Agenda
-        items={events} // we will retrieve the date
+        items={events}
         renderItem={renderCalendarEvent}
         renderEmptyData={renderEmptyData}
         onDayChange={dayChangeHandler}
