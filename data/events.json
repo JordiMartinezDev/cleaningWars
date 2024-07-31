@@ -36,13 +36,13 @@
       "id": "1",
       "name": "Cook dinner",
       "points": "3",
-      "user": "myUser"
+      "user": "Nil"
     },
     {
       "id": "2",
       "name": "Wash dishes",
       "points": "2",
-      "user": "myUser"
+      "user": "Nil"
     }
   ],
   "2024-07-30": [
@@ -50,14 +50,14 @@
       "id": "0",
       "name": "Clean entire kitchen",
       "points": "5",
-      "user": "myUser"
+      "user": "Amanda"
     },
 
     {
       "id": "2",
       "name": "Wash dishes",
       "points": "2",
-      "user": "myUser"
+      "user": "Amanda"
     }
   ],
   "2024-07-29": [
@@ -71,31 +71,31 @@
       "id": "1",
       "name": "Cook dinner",
       "points": "3",
-      "user": "myUser"
+      "user": "Nil"
     },
     {
       "id": "2",
       "name": "Wash dishes",
       "points": "2",
-      "user": "myUser"
+      "user": "Jordi"
     },
     {
       "id": "0",
       "name": "Clean entire kitchen",
       "points": "5",
-      "user": "myUser"
+      "user": "Jordi"
     },
     {
       "id": "1",
       "name": "Cook dinner",
       "points": "3",
-      "user": "myUser"
+      "user": "Amanda"
     },
     {
       "id": "2",
       "name": "Wash dishes",
       "points": "2",
-      "user": "myUser"
+      "user": "Nil"
     }
   ],
   "2024-08-03": [
@@ -103,14 +103,49 @@
       "id": "0",
       "name": "Clean entire kitchen",
       "points": "5",
-      "user": "myUser"
+      "user": "Amanda"
     },
-
     {
-      "id": "2",
-      "name": "Wash dishes",
-      "points": "2",
-      "user": "myUser"
+      "id": "1",
+      "name": "Different thingy",
+      "points": "5",
+      "user": "Jordi"
+    },
+    {
+      "id": "0",
+      "name": "Clean",
+      "points": "5",
+      "user": "Nil"
+    },
+    {
+      "id": "1",
+      "name": "Different",
+      "points": "5",
+      "user": "Paula"
+    },
+    {
+      "id": "0",
+      "name": "Living Room",
+      "points": "5",
+      "user": "Amanda"
+    },
+    {
+      "id": "1",
+      "name": "Different ",
+      "points": "5",
+      "user": "Jordi"
+    },
+    {
+      "id": "0",
+      "name": "Clean kitchen",
+      "points": "5",
+      "user": "Clara"
+    },
+    {
+      "id": "1",
+      "name": "Different thingy",
+      "points": "5",
+      "user": "Paula"
     }
   ],
   "2024-07-31": []

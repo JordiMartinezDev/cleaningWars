@@ -7,16 +7,16 @@
   {
     "name": "Clean dishes",
     "points": "2",
-    "id": "0"
+    "id": "1"
   },
   {
     "name": "Sweep room",
     "points": "1",
-    "id": "0"
+    "id": "2"
   },
   {
     "name": "Sweep House",
     "points": "4",
-    "id": "0"
+    "id": "3"
   }
 ]

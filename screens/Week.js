@@ -26,17 +26,28 @@ const Week = () => {
   const renderCalendarEvent = (event, isFirst) => {
     const fontSize = isFirst ? 14 : 14;
     const color = isFirst ? "#43515c" : "#43515c";
+    const userBg = {
+      backgroundColor: "#d4ef71",
+      //backgroundColor: event.user.color --> Create this property linked to each user
+    };
 
-    if (event.user == "myUser")
-      return (
-        <Pressable
-          style={[styles.pressableItem]}
-          onPress={() => navigation.navigate("eventDetails")}
-        >
-          <Text style={{ fontSize, color }}>{event.name}</Text>
-          <Text style={{ fontSize, color }}>{event.user}</Text>
-        </Pressable>
-      );
+    // Set different userBg.backgroundColor for each user so the background looks different
+    if (event.user == "Jordi") userBg.backgroundColor = "#ffb887";
+    if (event.user == "Amanda") userBg.backgroundColor = "#ffbadd";
+    if (event.user == "Nil") userBg.backgroundColor = "#fff08f";
+    if (event.user == "Clara") userBg.backgroundColor = "b2e1ff";
+    if (event.user == "Paula") userBg.backgroundColor = "d5bdff";
+    if (event.user == "default") userBg.backgroundColor = "#d4ef71";
+
+    return (
+      <Pressable
+        style={[styles.pressableItem, userBg]}
+        onPress={() => navigation.navigate("eventDetails")}
+      >
+        <Text style={{ fontSize, color }}>{event.name}</Text>
+        <Text style={{ fontSize, color }}>{event.user}</Text>
+      </Pressable>
+    );
   };
 
   const renderEmptyData = () => {
