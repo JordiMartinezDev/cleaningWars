@@ -1,29 +1,33 @@
 import { View, Text, Button, StyleSheet, Platform } from "react-native";
 import React from "react";
+import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 
 const AddTask = ({ navigation }) => {
   return (
-    <View style={styles.modalContainer}>
-      {/*this should be a modal with all tasks + add new task */}
-      <View style={styles.gridItem}>
-        <View style={styles.innerContainer}>
-          <Text>Task name/type</Text>
+    <>
+      <AddOrCancelHeader />
+      <View style={styles.modalContainer}>
+        {/*this should be a modal with all tasks + add new task */}
+        <View style={styles.gridItem}>
+          <View style={styles.innerContainer}>
+            <Text>Task name/type</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.gridItem}>
-        <View style={styles.innerContainer}>
-          <Text>User, default is logged in</Text>
+        <View style={styles.gridItem}>
+          <View style={styles.innerContainer}>
+            <Text>User, default is logged in</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.gridItem}>
-        <View style={styles.innerContainer}>
-          <Text>Day, default is selectedDay</Text>
+        <View style={styles.gridItem}>
+          <View style={styles.innerContainer}>
+            <Text>Day, default is selectedDay</Text>
+          </View>
         </View>
-      </View>
 
-      <Text style={{ fontSize: 30 }}>This is a modal!!</Text>
-      <Button onPress={() => navigation.goBack()} title="Dismisss" />
-    </View>
+        <Text style={{ fontSize: 30 }}>This is a modal!!</Text>
+        <Button onPress={() => navigation.goBack()} title="Dismisss" />
+      </View>
+    </>
   );
 };
 
@@ -34,8 +38,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   gridItem: {
-    margin: 16,
-    height: 64,
+    margin: 8,
+    height: 56,
+    minWidth: "80%",
     borderRadius: 8,
     elevation: 4,
     //iOS styling shadows
@@ -51,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "start",
   },
   formField: {
     backgroundColor: "white",
