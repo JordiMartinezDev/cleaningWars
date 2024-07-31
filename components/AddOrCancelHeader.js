@@ -1,14 +1,20 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import React from "react";
-import CancelButton from "./CancelButton";
-import SaveButton from "./SaveButton";
 
-const AddOrCancelHeader = () => {
+const AddOrCancelHeader = ({ goBack }) => {
   return (
     <View style={styles.container}>
-      <CancelButton />
+      <Pressable onPress={() => goBack()}>
+        <View style={styles.button}>
+          <Text style={{ color: "red", fontSize: 16 }}>Cancel</Text>
+        </View>
+      </Pressable>
       <Text style={styles.text}>Add new</Text>
-      <SaveButton />
+      <Pressable onPress={() => goBack()}>
+        <View style={styles.button}>
+          <Text style={{ color: "gray", fontSize: 16 }}>Save</Text>
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -24,5 +30,8 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 16,
+  },
+  button: {
+    marginHorizontal: 16,
   },
 });

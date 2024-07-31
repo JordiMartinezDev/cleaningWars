@@ -1,11 +1,13 @@
 import { View, Text, Button, StyleSheet, Platform } from "react-native";
 import React from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
+import Divider from "@mui/material/Divider";
 
 const AddTask = ({ navigation }) => {
   return (
     <>
-      <AddOrCancelHeader />
+      <AddOrCancelHeader goBack={navigation.goBack} />
+      <Divider />
       <View style={styles.modalContainer}>
         {/*this should be a modal with all tasks + add new task */}
         <View style={styles.gridItem}>
@@ -25,7 +27,7 @@ const AddTask = ({ navigation }) => {
         </View>
 
         <Text style={{ fontSize: 30 }}>This is a modal!!</Text>
-        <Button onPress={() => navigation.goBack()} title="Dismisss" />
+        <Button onPress={() => navigation.goBack()} title="Dismiss" />
       </View>
     </>
   );
