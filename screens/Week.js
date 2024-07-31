@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Alert,
+  Platform,
+} from "react-native";
 import React, { useState } from "react";
 import { Agenda } from "react-native-calendars";
 import events from "../data/events.json";
@@ -106,5 +113,10 @@ const styles = StyleSheet.create({
   addTaskButton: {
     justifyContent: "flex-end",
     alignContent: "flex-end",
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    //no Android specific
   },
 });

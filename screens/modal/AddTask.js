@@ -1,7 +1,8 @@
 import { View, Text, Button, StyleSheet, Platform } from "react-native";
 import React from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
-import Divider from "@mui/material/Divider";
+import { Divider } from "react-native-paper";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const AddTask = ({ navigation }) => {
   return (
@@ -13,6 +14,7 @@ const AddTask = ({ navigation }) => {
         <View style={styles.gridItem}>
           <View style={styles.innerContainer}>
             <Text>Task name/type</Text>
+            <AntDesign name="right" size={16} color="black" />
           </View>
         </View>
         <View style={styles.gridItem}>
@@ -25,9 +27,6 @@ const AddTask = ({ navigation }) => {
             <Text>Day, default is selectedDay</Text>
           </View>
         </View>
-
-        <Text style={{ fontSize: 30 }}>This is a modal!!</Text>
-        <Button onPress={() => navigation.goBack()} title="Dismiss" />
       </View>
     </>
   );
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "start",
   },
   gridItem: {
     margin: 8,
@@ -55,10 +54,10 @@ const styles = StyleSheet.create({
     overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   innerContainer: {
-    flex: 1,
+    flexDirection: "row",
     padding: 16,
-    justifyContent: "center",
-    alignItems: "start",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   formField: {
     backgroundColor: "white",

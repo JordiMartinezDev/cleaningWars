@@ -12,7 +12,7 @@ const ButtonAddTask = (onDay) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={addTaskHandler}>
-        <View style={null}>
+        <View>
           <AntDesign name="plus" size={32} color="white" />
         </View>
       </Pressable>
