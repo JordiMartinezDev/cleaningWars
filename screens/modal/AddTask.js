@@ -4,7 +4,6 @@ import React from "react";
 const AddTask = ({ navigation }) => {
   return (
     <View style={styles.modalContainer}>
-      <Text style={styles.gridItem}></Text>
       {/*this should be a modal with all tasks + add new task */}
       <View style={styles.gridItem}>
         <View style={styles.innerContainer}>
@@ -22,7 +21,6 @@ const AddTask = ({ navigation }) => {
         </View>
       </View>
 
-      <Text style={styles.gridItem}></Text>
       <Text style={{ fontSize: 30 }}>This is a modal!!</Text>
       <Button onPress={() => navigation.goBack()} title="Dismisss" />
     </View>
