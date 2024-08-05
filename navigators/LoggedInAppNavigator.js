@@ -15,6 +15,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AddTask from "../screens/modal/AddTask";
 import EventDetails from "../screens/modal/EventDetails";
 import Header from "../components/Header";
+import TaskList from "../screens/modal/TaskList";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -106,6 +107,13 @@ const LoggedInAppNavigator = () => {
           <Stack.Screen
             name="eventDetails"
             component={EventDetails}
+            options={() => {
+              presentation: "modal";
+            }}
+          />
+          <Stack.Screen
+            name="taskList"
+            component={TaskList}
             options={() => {
               presentation: "modal";
             }}

@@ -1,22 +1,38 @@
-import { View, Text, Button, StyleSheet, Platform } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Platform,
+  Pressable,
+} from "react-native";
 import React from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
-const AddTask = ({ navigation }) => {
+const AddTask = ({}) => {
+  const navigation = useNavigation();
+
+  function showTaskListModal() {
+    navigation.navigate("taskList");
+  }
+
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
       <View style={styles.modalContainer}>
         {/*this should be a modal with all tasks + add new task */}
-        <View style={styles.gridItem}>
-          <View style={styles.innerContainer}>
-            <Text>Task name/type</Text>
-            <AntDesign name="right" size={16} color="black" />
+        <Pressable onPress={showTaskListModal}>
+          <View style={styles.gridItem}>
+            <View style={styles.innerContainer}>
+              <Text>Task name/type</Text>
+              <AntDesign name="right" size={16} color="black" />
+            </View>
           </View>
-        </View>
+        </Pressable>
         <View style={styles.gridItem}>
           <View style={styles.innerContainer}>
             <Text>User, default is logged in</Text>
