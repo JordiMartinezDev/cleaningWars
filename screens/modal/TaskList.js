@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   Pressable,
+  Button,
 } from "react-native";
 import React, { useState } from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
@@ -45,7 +46,7 @@ const TaskList = () => {
       />
       <Pressable onPress={newTask}>
         <View style={styles.newTaskButton}>
-          <Text>+</Text>
+          <Button title="Add new" onPress={() => console.log("addNew")} />
         </View>
       </Pressable>
     </View>
@@ -67,8 +68,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height / 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "blue",
-    margin: 8,
     borderRadius: 8,
   },
 });
