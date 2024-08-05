@@ -11,21 +11,38 @@ const NewTask = () => {
 
   function pointsHandler() {}
   return (
-    <View>
+    <View style={styles.container}>
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
-      <Input title={"Task name"} textInputConfig={null} />
-      <Input title={"Icon"} textInputConfig={null} />
-      <Input
-        title={"Points"}
-        textInputConfig={{ keyboardType: "decimal-pad" }}
-        onChangeText={pointsHandler}
-      />
+      <View style={styles.inputContainer}>
+        <Input
+          textInputConfig={{
+            placeholder: "Name",
+          }}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Input
+          textInputConfig={{
+            keyboardType: "decimal-pad",
+            placeholder: "Score",
+          }}
+          onChangeText={pointsHandler}
+        />
+      </View>
+
+      <Text>Icon</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginHorizontal: 8,
+  },
+  inputContainer: {
+    marginTop: 8,
+  },
+  nameContainer: {},
 });
 export default NewTask;
