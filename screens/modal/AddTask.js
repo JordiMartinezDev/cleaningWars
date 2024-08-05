@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "start",
+    paddingTop: 32,
   },
   gridItem: {
     margin: 8,

@@ -30,9 +30,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 24,
   },
   button: {
     marginHorizontal: 16,
+    padding: 8,
   },
 });

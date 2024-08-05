@@ -93,15 +93,6 @@ const LoggedInAppNavigator = () => {
             options={{}}
           />
         </Stack.Group>
-        <Stack.Group>
-          <Stack.Screen
-            name="taskList"
-            component={TaskList}
-            options={() => {
-              presentation: "modal";
-            }}
-          />
-        </Stack.Group>
         <Stack.Group
           screenOptions={{
             presentation: "modal",
@@ -109,33 +100,18 @@ const LoggedInAppNavigator = () => {
           }}
         >
           <Stack.Screen
-            name="newTask"
-            component={NewTask}
-            options={() => {
-              presentation: "modal";
-            }}
-          />
-          <Stack.Screen
             name="eventDetails"
             component={EventDetails}
             options={() => {
               presentation: "modal";
             }}
           />
-          <Stack.Screen
-            name="addTask"
-            component={AddTask}
-            options={() => {
-              presentation: "card";
-            }}
-          />
-          <Stack.Screen
-            name="datePicker"
-            component={DatePicker}
-            options={() => {
-              presentation: "modal";
-            }}
-          />
+        </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen name="taskList" component={TaskList} />
+          <Stack.Screen name="datePicker" component={DatePicker} />
+          <Stack.Screen name="addTask" component={AddTask} />
+          <Stack.Screen name="newTask" component={NewTask} />
         </Stack.Group>
       </Stack.Navigator>
     </>
