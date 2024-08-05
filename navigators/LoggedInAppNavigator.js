@@ -17,6 +17,7 @@ import EventDetails from "../screens/modal/EventDetails";
 import Header from "../components/Header";
 import TaskList from "../screens/modal/TaskList";
 import NewTask from "../screens/modal/NewTask";
+import DatePicker from "../components/DatePicker";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -92,6 +93,15 @@ const LoggedInAppNavigator = () => {
             options={{}}
           />
         </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen
+            name="taskList"
+            component={TaskList}
+            options={() => {
+              presentation: "modal";
+            }}
+          />
+        </Stack.Group>
         <Stack.Group
           screenOptions={{
             presentation: "modal",
@@ -99,8 +109,8 @@ const LoggedInAppNavigator = () => {
           }}
         >
           <Stack.Screen
-            name="addTask"
-            component={AddTask}
+            name="newTask"
+            component={NewTask}
             options={() => {
               presentation: "modal";
             }}
@@ -113,15 +123,15 @@ const LoggedInAppNavigator = () => {
             }}
           />
           <Stack.Screen
-            name="taskList"
-            component={TaskList}
+            name="addTask"
+            component={AddTask}
             options={() => {
-              presentation: "modal";
+              presentation: "card";
             }}
           />
           <Stack.Screen
-            name="newTask"
-            component={NewTask}
+            name="datePicker"
+            component={DatePicker}
             options={() => {
               presentation: "modal";
             }}

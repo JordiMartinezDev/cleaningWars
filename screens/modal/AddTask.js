@@ -6,7 +6,7 @@ import {
   Platform,
   Pressable,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -17,6 +17,9 @@ const AddTask = ({}) => {
 
   function showTaskListModal() {
     navigation.navigate("taskList");
+  }
+  function showCalendar() {
+    navigation.navigate("datePicker");
   }
 
   return (
@@ -35,13 +38,15 @@ const AddTask = ({}) => {
         </Pressable>
         <View style={styles.gridItem}>
           <View style={styles.innerContainer}>
-            <Text>User, default is logged in</Text>
+            <Text>User</Text>
           </View>
         </View>
         <View style={styles.gridItem}>
-          <View style={styles.innerContainer}>
-            <Text>Day, default is selectedDay</Text>
-          </View>
+          <Pressable onPress={showCalendar}>
+            <View style={styles.innerContainer}>
+              <Text>{"date"}</Text>
+            </View>
+          </Pressable>
         </View>
       </View>
     </>
