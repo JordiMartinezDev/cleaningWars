@@ -46,7 +46,7 @@ const TaskList = () => {
       />
       <Pressable onPress={newTask}>
         <View style={styles.newTaskButton}>
-          <Button title="Add new" onPress={() => console.log("addNew")} />
+          <Button title="Add new" onPress={newTask} />
         </View>
       </Pressable>
     </View>
