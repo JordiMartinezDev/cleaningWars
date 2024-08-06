@@ -4,18 +4,33 @@ import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import CustomIcon from "../../components/CustomIcon";
 
 const SelectIcon = () => {
   const navigation = useNavigation();
 
-  const iconList = [{ name: "baby", size: 24, color: "black" }];
+  const iconList = [
+    "baby",
+    "baby-carriage",
+    "sweep",
+    "laundry",
+    "dishes",
+    "bathroom",
+    "kitchen",
+    "dog",
+    "clothing",
+    "local-laundry-service",
+  ];
 
   return (
     <ScrollView>
       <AddOrCancelHeader goBack={navigation.goBack} />
+
       <Divider />
       <View>
-        <FontAwesome5 name={iconList[0].name} size={48} color="black" />
+        {iconList.map((icon) => {
+          return <CustomIcon icon={icon} size={24} color={"black"} />;
+        })}
       </View>
     </ScrollView>
   );

@@ -16,14 +16,11 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 4,
   },
-  title: {
-    fontSize: 12,
-    marginBottom: 4,
-  },
+
   text: {
     backgroundColor: "white",
     padding: 6,
     borderRadius: 6,
-    fontSize: 24,
+    fontSize: 20,
   },
 });

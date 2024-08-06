@@ -50,15 +50,15 @@ const NewTask = () => {
         <Pressable onPress={handleSelectIcon}>
           <View style={styles.iconBar}>
             <View style={styles.defaultIconAndText}>
+              <Text style={styles.iconText}>Select Icon</Text>
               <MaterialIcons
                 name="local-laundry-service"
-                size={48}
-                color="black"
+                size={40}
+                color="gray"
               />
-              <Text style={styles.iconText}>Select Icon</Text>
             </View>
             <View style={styles.icon}>
-              <AntDesign name="right" size={20} color="gray" />
+              <AntDesign name="right" size={16} color="gray" />
             </View>
           </View>
         </Pressable>
@@ -88,11 +88,13 @@ const styles = StyleSheet.create({
   },
   iconText: {
     color: "gray",
-    fontSize: 24,
-    marginLeft: 4,
+    fontSize: 20,
+    marginLeft: 8,
   },
   defaultIconAndText: {
+    flex: 1,
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   icon: {
