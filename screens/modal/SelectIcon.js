@@ -29,7 +29,7 @@ const SelectIcon = () => {
       <Divider />
       <View>
         {iconList.map((icon) => {
-          return <CustomIcon icon={icon} size={24} color={"black"} />;
+          return <CustomIcon icon={icon} size={48} color={"black"} />;
         })}
       </View>
     </ScrollView>
