@@ -18,6 +18,7 @@ import Header from "../components/Header";
 import TaskList from "../screens/modal/TaskList";
 import NewTask from "../screens/modal/NewTask";
 import DatePicker from "../components/DatePicker";
+import SelectIcon from "../screens/modal/SelectIcon";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -112,6 +113,7 @@ const LoggedInAppNavigator = () => {
           <Stack.Screen name="datePicker" component={DatePicker} />
           <Stack.Screen name="addTask" component={AddTask} />
           <Stack.Screen name="newTask" component={NewTask} />
+          <Stack.Screen name="selectIcon" component={SelectIcon} />
         </Stack.Group>
       </Stack.Navigator>
     </>
