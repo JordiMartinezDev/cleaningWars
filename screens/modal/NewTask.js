@@ -6,9 +6,14 @@ import { Divider } from "react-native-paper";
 import Input from "../../components/Input";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useSelector } from "react-redux";
+import CustomIcon from "../../components/CustomIcon";
 
 const NewTask = () => {
   const navigation = useNavigation();
+  const selectedIcon = useSelector((state) => state.icon.iconName);
+
+  console.log(selectedIcon);
 
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
@@ -22,6 +27,7 @@ const NewTask = () => {
   function handleSelectIcon() {
     navigation.navigate("selectIcon");
   }
+
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} />
@@ -51,11 +57,7 @@ const NewTask = () => {
           <View style={styles.iconBar}>
             <View style={styles.defaultIconAndText}>
               <Text style={styles.iconText}>Select Icon</Text>
-              <MaterialIcons
-                name="local-laundry-service"
-                size={40}
-                color="gray"
-              />
+              <CustomIcon icon={selectedIcon} size={48} color={"black"} />
             </View>
             <View style={styles.icon}>
               <AntDesign name="right" size={16} color="gray" />
@@ -77,6 +79,13 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 8,
     backgroundColor: "white",
+    //shadow on Android
+    elevation: 8,
+    //Shadow on iOS
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
   },
   nameContainer: {},
   iconBar: {
@@ -85,6 +94,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "white",
     marginTop: 8,
+    elevation: 8,
+    //Shadow on iOS
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
   },
   iconText: {
     color: "gray",

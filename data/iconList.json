@@ -1,0 +1,22 @@
+[
+  { "name": "baby", "id": 1 },
+  { "name": "baby-carriage", "id": 2 },
+  { "name": "dog", "id": 3 },
+  { "name": "toilet", "id": 4 },
+  { "name": "kitchen-set", "id": 5 },
+  { "name": "local-laundry-service", "id": 6 },
+  { "name": "checkroom", "id": 7 },
+  { "name": "iron-board", "id": 8 },
+  { "name": "broom", "id": 9 },
+  { "name": "suitcase", "id": 10 },
+  { "name": "trash", "id": 11 },
+  { "name": "tree", "id": 12 },
+  { "name": "cart", "id": 13 },
+  { "name": "baby-carriage", "id": 14 },
+  { "name": "baby-carriage", "id": 15 },
+  { "name": "baby", "id": 16 },
+  { "name": "baby", "id": 17 },
+  { "name": "local-laundry-service", "id": 18 },
+  { "name": "local-laundry-service", "id": 19 },
+  { "name": "baby", "id": 20 }
+]
