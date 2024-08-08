@@ -4,6 +4,8 @@ import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
+import CustomCard from "../../components/CustomCard";
+import DatePicker from "../../components/DatePicker";
 
 const AddTask = () => {
   const navigation = useNavigation();
@@ -16,55 +18,66 @@ const AddTask = () => {
     navigation.navigate("datePicker");
   };
 
+  const showUserModal = () => {
+    // Define what to do when the "User" field is pressed
+  };
+
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
-      <View style={styles.modalContainer}>
-        <Pressable onPress={showTaskListModal} style={styles.pressable}>
-          <View style={styles.gridItem}>
-            <View style={styles.innerContainer}>
-              <Text style={styles.text}>Task name/type</Text>
-              <AntDesign name="right" size={16} color="black" />
-            </View>
-          </View>
-        </Pressable>
-        <View style={styles.gridItem}>
+
+      <View style={styles.container}>
+        <CustomCard
+          taskName="Kitchen"
+          icon="baby"
+          score={5}
+          user="Jordi"
+          color="#f47d2e"
+        />
+
+        <Pressable
+          onPress={showUserModal}
+          style={({ pressed }) => [
+            styles.gridItem,
+            pressed && styles.itemPressed,
+          ]}
+        >
           <View style={styles.innerContainer}>
             <Text style={styles.text}>User</Text>
           </View>
-        </View>
-        <Pressable onPress={showCalendar} style={styles.pressable}>
-          <View style={styles.gridItem}>
-            <View style={styles.innerContainer}>
-              <Text style={styles.text}>Date</Text>
-            </View>
-          </View>
         </Pressable>
+        {/* <Pressable
+          onPress={showCalendar}
+          style={({ pressed }) => [
+            styles.gridItem,
+            pressed && styles.itemPressed,
+          ]}
+        >
+          <View style={styles.innerContainer}>
+            <Text style={styles.text}>Date</Text>
+          </View>
+        </Pressable> */}
+        <DatePicker />
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
+  container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
     paddingTop: 32,
-    backgroundColor: "#f0f0f0", // Background color for better contrast
-  },
-  pressable: {
-    width: "100%", // Ensures pressable area covers the whole width
-    alignItems: "center",
+    backgroundColor: "#f9f9f9", // Light gray background to match TaskList
   },
   gridItem: {
     width: "90%",
-
     marginVertical: 8,
     marginHorizontal: 16,
     height: 56,
-    borderRadius: 10,
+    borderRadius: 8, // Consistent rounded corners
     backgroundColor: "white",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -72,6 +85,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 2,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
+    justifyContent: "center",
   },
   innerContainer: {
     flexDirection: "row",
@@ -81,7 +95,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: "#333", // Darker text color for better readability
+    color: "#333", // Consistent text color
+  },
+  itemPressed: {
+    backgroundColor: "#e6e6e6", // Slightly darker gray when pressed
   },
 });
 
