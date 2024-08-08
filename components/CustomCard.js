@@ -21,7 +21,10 @@ const CustomCard = ({ taskName, icon, score, user, bgColor, onPress }) => {
 
   return (
     <View style={styles.card}>
-      <Pressable onPress={onPress}>
+      <Pressable
+        style={({ pressed }) => pressed && styles.pressed}
+        onPress={onPress}
+      >
         <View style={[styles.contentContainer, bgColor]}>
           <FontAwesome5
             name={icon}
@@ -85,6 +88,9 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: "bold",
     color: "#555",
+  },
+  pressed: {
+    backgroundColor: "#e6e6e6", // Darker blue when pressed
   },
 });
 
