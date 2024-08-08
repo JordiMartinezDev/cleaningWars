@@ -1,23 +1,15 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import React, { useState } from "react";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import CustomIcon from "../../components/CustomIcon";
 import { useDispatch } from "react-redux";
 import { setIcon } from "../../context/redux/slicers/iconSlicer";
 import iconList from "../../data/iconList.json";
 
 const SelectIcon = () => {
-  const [selectedIcon, setSelectedIcon] = useState(0);
+  const [selectedIcon, setSelectedIcon] = useState(null);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -28,15 +20,32 @@ const SelectIcon = () => {
       <ScrollView>
         <View style={styles.grid}>
           {iconList.map((icon) => {
+            const isSelected = selectedIcon === icon.id;
             return (
-              <View style={styles.iconContainer} key={icon.id}>
+              <View
+                style={[
+                  styles.iconContainer,
+                  isSelected && styles.selectedIconContainer,
+                ]}
+                key={icon.id}
+              >
                 <Pressable
                   onPress={() => {
+                    setSelectedIcon(icon.id);
                     dispatch(setIcon({ iconId: icon.id, iconName: icon.name }));
                     navigation.navigate("newTask");
                   }}
+                  style={({ pressed }) => [
+                    {
+                      opacity: pressed ? 0.5 : 1,
+                    },
+                  ]}
                 >
-                  <CustomIcon icon={icon.name} size={48} color={"black"} />
+                  <CustomIcon
+                    icon={icon.name}
+                    size={48}
+                    color={isSelected ? "blue" : "black"}
+                  />
                 </Pressable>
               </View>
             );
@@ -51,24 +60,26 @@ export default SelectIcon;
 
 const styles = StyleSheet.create({
   grid: {
-    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-evenly",
-    alignItems: "center",
+    padding: 10,
   },
   iconContainer: {
-    width: "15%",
-    margin: "5%",
+    width: "22%", // Ensure there are 4 icons per row with some spacing
+    margin: "1.5%",
     alignItems: "center",
     backgroundColor: "white",
     borderRadius: 8,
-    padding: 4,
-    elevation: 8,
-    //Shadow on iOS
+    padding: 10,
+    elevation: 5,
     shadowColor: "black",
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowRadius: 5,
+  },
+  selectedIconContainer: {
+    borderColor: "blue",
+    borderWidth: 2,
   },
 });
