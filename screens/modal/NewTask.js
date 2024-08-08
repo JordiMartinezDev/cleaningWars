@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, Platform, Pressable } from "react-native";
 import React, { useState } from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { useNavigation } from "@react-navigation/native";
 import { Divider } from "react-native-paper";
 import Input from "../../components/Input";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useSelector } from "react-redux";
 import CustomIcon from "../../components/CustomIcon";
 
@@ -13,20 +12,12 @@ const NewTask = () => {
   const navigation = useNavigation();
   const selectedIcon = useSelector((state) => state.icon.iconName);
 
-  console.log(selectedIcon);
-
   const [name, setName] = useState("");
   const [score, setScore] = useState("");
 
-  function scoreHandler(score) {
-    setScore(score);
-  }
-  function nameHandler(name) {
-    setName(name);
-  }
-  function handleSelectIcon() {
-    navigation.navigate("selectIcon");
-  }
+  const scoreHandler = (score) => setScore(score);
+  const nameHandler = (name) => setName(name);
+  const handleSelectIcon = () => navigation.navigate("selectIcon");
 
   return (
     <>
@@ -47,7 +38,8 @@ const NewTask = () => {
           <Input
             textInputConfig={{
               keyboardType: "decimal-pad",
-              placeholder: "Score",
+              placeholder: "Score (0-10)",
+              maxLength: 2,
             }}
             onChangeText={scoreHandler}
             value={score}
@@ -56,8 +48,8 @@ const NewTask = () => {
         <Pressable onPress={handleSelectIcon}>
           <View style={styles.iconBar}>
             <View style={styles.defaultIconAndText}>
-              <Text style={styles.iconText}>Select Icon</Text>
-              <CustomIcon icon={selectedIcon} size={48} color={"black"} />
+              <Text style={styles.placeholderText}>Select Icon</Text>
+              <CustomIcon icon={selectedIcon} size={32} color={"black"} />
             </View>
             <View style={styles.icon}>
               <AntDesign name="right" size={16} color="gray" />
@@ -72,48 +64,66 @@ const NewTask = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 24,
-    marginHorizontal: 24,
-    justifyContent: "start",
+    padding: 16,
+    backgroundColor: "#f9f9f9",
   },
   inputContainer: {
-    marginTop: 8,
+    marginVertical: 8,
     backgroundColor: "white",
-    //shadow on Android
-    elevation: 8,
-    //Shadow on iOS
-    shadowColor: "black",
-    shadowOpacity: 0.25,
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowRadius: 4,
+    elevation: 2,
+    height: 50,
   },
-  nameContainer: {},
+  smallInputContainer: {
+    marginVertical: 8,
+    backgroundColor: "white",
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
+    height: 50,
+    width: "30%",
+  },
   iconBar: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "white",
-    marginTop: 8,
-    elevation: 8,
-    //Shadow on iOS
-    shadowColor: "black",
-    shadowOpacity: 0.25,
+    marginVertical: 8,
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowRadius: 4,
+    elevation: 2,
+    height: 50,
   },
-  iconText: {
-    color: "gray",
-    fontSize: 20,
-    marginLeft: 8,
+  placeholderText: {
+    color: "#C7C7CD", // Similar to placeholder text color
+    fontSize: 20, // Same font size as input placeholders
+    paddingHorizontal: 8,
   },
   defaultIconAndText: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between",
   },
   icon: {
-    marginRight: 8,
+    marginLeft: 8,
   },
 });
+
 export default NewTask;
