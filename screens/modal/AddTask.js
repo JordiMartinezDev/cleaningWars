@@ -1,53 +1,46 @@
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Platform,
-  Pressable,
-} from "react-native";
-import React, { useState } from "react";
+import React from "react";
+import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { Divider } from "react-native-paper";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 
-const AddTask = ({}) => {
+const AddTask = () => {
   const navigation = useNavigation();
 
-  function showTaskListModal() {
+  const showTaskListModal = () => {
     navigation.navigate("taskList");
-  }
-  function showCalendar() {
+  };
+
+  const showCalendar = () => {
     navigation.navigate("datePicker");
-  }
+  };
 
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
       <View style={styles.modalContainer}>
-        {/*this should be a modal with all tasks + add new task */}
-        <Pressable onPress={showTaskListModal}>
+        <Pressable onPress={showTaskListModal} style={styles.pressable}>
           <View style={styles.gridItem}>
             <View style={styles.innerContainer}>
-              <Text>Task name/type</Text>
+              <Text style={styles.text}>Task name/type</Text>
               <AntDesign name="right" size={16} color="black" />
             </View>
           </View>
         </Pressable>
         <View style={styles.gridItem}>
           <View style={styles.innerContainer}>
-            <Text>User</Text>
+            <Text style={styles.text}>User</Text>
           </View>
         </View>
-        <View style={styles.gridItem}>
-          <Pressable onPress={showCalendar}>
+        <Pressable onPress={showCalendar} style={styles.pressable}>
+          <View style={styles.gridItem}>
             <View style={styles.innerContainer}>
-              <Text>{"date"}</Text>
+              <Text style={styles.text}>Date</Text>
             </View>
-          </Pressable>
-        </View>
+          </View>
+        </Pressable>
       </View>
     </>
   );
@@ -57,22 +50,27 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "start",
+    justifyContent: "flex-start",
     paddingTop: 32,
+    backgroundColor: "#f0f0f0", // Background color for better contrast
+  },
+  pressable: {
+    width: "100%", // Ensures pressable area covers the whole width
+    alignItems: "center",
   },
   gridItem: {
-    margin: 8,
+    width: "90%",
+
+    marginVertical: 8,
+    marginHorizontal: 16,
     height: 56,
-    minWidth: "80%",
-    borderRadius: 8,
-    elevation: 4,
-    //iOS styling shadows
-    backgroundColor: "white", // This is not iOS specific, but needed in order for iOS shadows to work
-    shadowColor: "black",
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    //no Android specific
+    borderRadius: 10,
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 3,
+    elevation: 2,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   innerContainer: {
@@ -81,8 +79,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  formField: {
-    backgroundColor: "white",
+  text: {
+    fontSize: 16,
+    color: "#333", // Darker text color for better readability
   },
 });
 
