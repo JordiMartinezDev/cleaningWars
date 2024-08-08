@@ -1,9 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Platform,
+  Pressable,
+} from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 
-const CustomCard = ({ taskName, icon, score, user, bgColor }) => {
+const CustomCard = ({ taskName, icon, score, user, bgColor, onPress }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -13,16 +20,23 @@ const CustomCard = ({ taskName, icon, score, user, bgColor }) => {
   };
 
   return (
-    <View style={styles.card} onTouchEnd={handlePress}>
-      <View style={[styles.contentContainer, bgColor]}>
-        <FontAwesome5 name={icon} size={48} color="#555" style={styles.icon} />
-        <View style={styles.separator} />
-        <View style={styles.infoContainer}>
-          <Text style={styles.taskName}>{taskName}</Text>
-          <Text style={styles.user}>By: {user}</Text>
+    <View style={styles.card}>
+      <Pressable onPress={onPress}>
+        <View style={[styles.contentContainer, bgColor]}>
+          <FontAwesome5
+            name={icon}
+            size={48}
+            color="#555"
+            style={styles.icon}
+          />
+          <View style={styles.separator} />
+          <View style={styles.infoContainer}>
+            <Text style={styles.taskName}>{taskName}</Text>
+            <Text style={styles.user}>By: {user}</Text>
+          </View>
+          <Text style={styles.score}>{score}</Text>
         </View>
-        <Text style={styles.score}>{score}</Text>
-      </View>
+      </Pressable>
     </View>
   );
 };

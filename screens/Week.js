@@ -33,6 +33,10 @@ const Week = () => {
   const [selectedDay, setSelectedDay] = useState(getStartingDate());
   console.log(selectedDay);
 
+  function showDetails() {
+    navigation.navigate("eventDetails");
+  }
+
   const renderCalendarEvent = (event, isFirst) => {
     const fontSize = isFirst ? 14 : 14;
     const color = isFirst ? "#43515c" : "#43515c";
@@ -50,15 +54,14 @@ const Week = () => {
     if (event.user == "default") userBg.backgroundColor = "#d4ef71";
 
     return (
-      <Pressable onPress={() => navigation.navigate("eventDetails")}>
-        <CustomCard
-          taskName={event.name}
-          icon="baby"
-          score={5}
-          user="Jordi"
-          bgColor={userBg}
-        />
-      </Pressable>
+      <CustomCard
+        taskName={event.name}
+        icon="baby"
+        score={5}
+        user="Jordi"
+        bgColor={userBg}
+        onPress={showDetails}
+      />
     );
   };
 

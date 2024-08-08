@@ -34,8 +34,9 @@ const AddTask = () => {
           score={5}
           user="Jordi"
           color="#f47d2e"
+          onPress={showTaskListModal}
+          bgColor={null}
         />
-
         <Pressable
           onPress={showUserModal}
           style={({ pressed }) => [
