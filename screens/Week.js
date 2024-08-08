@@ -51,7 +51,13 @@ const Week = () => {
 
     return (
       <Pressable onPress={() => navigation.navigate("eventDetails")}>
-        <CustomCard taskName={event.name} icon="baby" score={5} user="Jordi" />
+        <CustomCard
+          taskName={event.name}
+          icon="baby"
+          score={5}
+          user="Jordi"
+          bgColor={userBg}
+        />
       </Pressable>
     );
   };

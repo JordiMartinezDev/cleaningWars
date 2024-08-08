@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions, Platform } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 
-const CustomCard = ({ taskName, icon, score, user }) => {
+const CustomCard = ({ taskName, icon, score, user, bgColor }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -14,7 +14,7 @@ const CustomCard = ({ taskName, icon, score, user }) => {
 
   return (
     <View style={styles.card} onTouchEnd={handlePress}>
-      <View style={styles.contentContainer}>
+      <View style={[styles.contentContainer, bgColor]}>
         <FontAwesome5 name={icon} size={48} color="#555" style={styles.icon} />
         <View style={styles.separator} />
         <View style={styles.infoContainer}>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   separator: {
     width: 1,
     height: 48,
-    backgroundColor: "#e0e0e0", // Light gray color for the separator
+    backgroundColor: "#333", //"#e0e0e0", // Light gray color for the separator
     marginHorizontal: 16, // Matches the marginRight of the icon
   },
   infoContainer: {
