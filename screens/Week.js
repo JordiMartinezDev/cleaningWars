@@ -11,6 +11,7 @@ import { Agenda } from "react-native-calendars";
 import events from "../data/events.json";
 import { useNavigation } from "@react-navigation/native";
 import ButtonAddTask from "../components/ButtonAddTask";
+import CustomCard from "../components/CustomCard";
 
 function getStartingDate() {
   const year = new Date().getFullYear();
@@ -49,12 +50,8 @@ const Week = () => {
     if (event.user == "default") userBg.backgroundColor = "#d4ef71";
 
     return (
-      <Pressable
-        style={[styles.pressableItem, userBg]}
-        onPress={() => navigation.navigate("eventDetails")}
-      >
-        <Text style={{ fontSize, color }}>{event.name}</Text>
-        <Text style={{ fontSize, color }}>{event.user}</Text>
+      <Pressable onPress={() => navigation.navigate("eventDetails")}>
+        <CustomCard taskName={event.name} icon="baby" score={5} user="Jordi" />
       </Pressable>
     );
   };
