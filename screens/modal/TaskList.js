@@ -31,20 +31,15 @@ const TaskList = () => {
       <FlatList
         data={tasks}
         renderItem={({ item }) => (
-          <Pressable
-            onPress={() => handleTaskSelection(item)}
-            style={({ pressed }) => [
-              styles.itemContainer,
-              pressed && styles.itemPressed,
-            ]}
-          >
+          <View style={styles.itemContainer}>
             <CustomCard
               taskName={item.name}
               icon="baby"
               score={item.points}
               bgColor={"white"}
+              onPress={() => handleTaskSelection(item)}
             />
-          </Pressable>
+          </View>
         )}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
@@ -72,9 +67,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   itemContainer: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    zIndex: -1,
   },
   itemPressed: {
     backgroundColor: "#e6e6e6", // Slightly darker gray when pressed
