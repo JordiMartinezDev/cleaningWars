@@ -13,15 +13,21 @@ import { useNavigation } from "@react-navigation/native";
 import tasks from "../../data/tasks.json";
 import { Divider } from "react-native-paper";
 import CustomCard from "../../components/CustomCard";
+import { useDispatch } from "react-redux";
+import { setTask } from "../../context/redux/slicers/cardSlicer";
 
 const TaskList = () => {
   const navigation = useNavigation();
 
-  const [selectedTask, setSelectedTask] = useState(null);
+  const [selectedTask, setSelectedTask] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleTaskSelection = (task) => {
     setSelectedTask(task);
+    dispatch(setTask(task));
     // use Redux Context to set the task or perform other actions
+    navigation.goBack();
   };
 
   const handleNewTask = () => {
@@ -49,7 +55,6 @@ const TaskList = () => {
               taskName={item.name}
               icon="baby"
               score={item.points}
-              user={"Jordi"}
               bgColor={"white"}
               onPress={handleSelectTask}
             />

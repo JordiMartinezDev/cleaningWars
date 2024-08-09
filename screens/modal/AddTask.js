@@ -14,6 +14,7 @@ import { Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import CustomCard from "../../components/CustomCard";
 import DatePicker from "../../components/DatePicker";
+import { useSelector } from "react-redux";
 
 const { height: screenHeight } = Dimensions.get("window");
 
@@ -21,6 +22,7 @@ const AddTask = () => {
   const navigation = useNavigation();
   const [user, setUser] = useState("Jordi");
   const [isUserModalVisible, setUserModalVisible] = useState(false);
+  const cardProps = useSelector((state) => state.card);
 
   const showTaskListModal = () => {
     navigation.navigate("taskList");
@@ -51,15 +53,7 @@ const AddTask = () => {
       <Divider />
 
       <View style={styles.container}>
-        <CustomCard
-          taskName="Kitchen"
-          icon="baby"
-          score={5}
-          user="Jordi"
-          color="#f47d2e"
-          onPress={showTaskListModal}
-          bgColor={null}
-        />
+        <CustomCard {...cardProps} onPress={showTaskListModal} />
         <Pressable
           onPress={showUserModal}
           style={({ pressed }) => [
