@@ -87,7 +87,7 @@ const Week = () => {
         onDayPress={(day) => {
           setSelectedDay(day.dateString);
         }}
-
+        firstDay={1}
         // showOnlySelectedDayItems={false}
         // showClosingKnob={true}
       />

@@ -6,7 +6,7 @@ const AddOrCancelHeader = ({ goBack }) => {
     <View style={styles.container}>
       <Pressable onPress={() => goBack()}>
         <View style={styles.button}>
-          <Text style={{ color: "red", fontSize: 16 }}>Cancel</Text>
+          <Text style={{ color: "red", fontSize: 16 }}>Back</Text>
         </View>
       </Pressable>
       <Text style={styles.text}>Add new</Text>

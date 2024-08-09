@@ -48,17 +48,7 @@ const AddTask = () => {
             <Text style={styles.text}>User</Text>
           </View>
         </Pressable>
-        {/* <Pressable
-          onPress={showCalendar}
-          style={({ pressed }) => [
-            styles.gridItem,
-            pressed && styles.itemPressed,
-          ]}
-        >
-          <View style={styles.innerContainer}>
-            <Text style={styles.text}>Date</Text>
-          </View>
-        </Pressable> */}
+
         <DatePicker />
       </View>
     </>

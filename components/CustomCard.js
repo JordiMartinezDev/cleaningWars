@@ -47,7 +47,7 @@ const CustomCard = ({ taskName, icon, score, user, bgColor, onPress }) => {
 const styles = StyleSheet.create({
   card: {
     width: "90%",
-    marginVertical: 8,
+    marginVertical: 4,
     borderRadius: 12,
     backgroundColor: "white",
     shadowColor: "#000",
