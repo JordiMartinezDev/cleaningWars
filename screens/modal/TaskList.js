@@ -1,40 +1,27 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Dimensions,
-  Pressable,
-  Button,
-} from "react-native";
+import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { useNavigation } from "@react-navigation/native";
 import tasks from "../../data/tasks.json";
 import { Divider } from "react-native-paper";
 import CustomCard from "../../components/CustomCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTask } from "../../context/redux/slicers/cardSlicer";
 
 const TaskList = () => {
   const navigation = useNavigation();
-
-  const [selectedTask, setSelectedTask] = useState({});
-
   const dispatch = useDispatch();
 
   const handleTaskSelection = (task) => {
-    setSelectedTask(task);
-    dispatch(setTask(task));
-    // use Redux Context to set the task or perform other actions
-    navigation.goBack();
+    console.log("Tapped"); // Ensure this logs
+    dispatch(setTask(task)); // Update Redux state
+    console.log("Task in Redux:", task); // Log the task being dispatched
+    navigation.goBack(); // Go back to AddTask screen
   };
 
   const handleNewTask = () => {
     navigation.navigate("newTask");
   };
-
-  const handleSelectTask = () => {};
 
   return (
     <View style={styles.container}>
@@ -56,11 +43,10 @@ const TaskList = () => {
               icon="baby"
               score={item.points}
               bgColor={"white"}
-              onPress={handleSelectTask}
             />
           </Pressable>
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContent}
       />
       <Pressable
@@ -92,14 +78,6 @@ const styles = StyleSheet.create({
   },
   itemPressed: {
     backgroundColor: "#e6e6e6", // Slightly darker gray when pressed
-  },
-  innerContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 16,
-    color: "#333", // Darker text color for better readability
   },
   newTaskButton: {
     height: 50,
