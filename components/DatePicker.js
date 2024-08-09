@@ -1,14 +1,18 @@
 import { View, StyleSheet, Platform } from "react-native";
 import React, { useState } from "react";
 import { Calendar } from "react-native-calendars";
+import { useDispatch } from "react-redux";
+import { setEventTask } from "../context/redux/slicers/taskEventSlicer";
 
 const DatePicker = () => {
   const [selectedDate, setSelectedDate] = useState();
 
+  const dispatch = useDispatch();
   // Handler function for when a date is selected
   function setDay(date) {
     console.log(date.dateString);
     setSelectedDate(date.dateString);
+    dispatch(setEventTask({ date: date.dateString }));
   }
 
   // `markedDates` with the selected date

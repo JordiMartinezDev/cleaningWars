@@ -1,7 +1,12 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import React from "react";
 
-const AddOrCancelHeader = ({ goBack }) => {
+const AddOrCancelHeader = ({ goBack, save }) => {
+  function savePressed() {
+    save();
+    goBack();
+  }
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => goBack()}>
@@ -10,7 +15,7 @@ const AddOrCancelHeader = ({ goBack }) => {
         </View>
       </Pressable>
       <Text style={styles.text}>Add new</Text>
-      <Pressable onPress={() => goBack()}>
+      <Pressable onPress={savePressed}>
         <View style={styles.button}>
           <Text style={{ color: "gray", fontSize: 16 }}>Save</Text>
         </View>

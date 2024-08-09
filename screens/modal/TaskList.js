@@ -6,15 +6,21 @@ import tasks from "../../data/tasks.json";
 import { Divider } from "react-native-paper";
 import CustomCard from "../../components/CustomCard";
 import { useDispatch, useSelector } from "react-redux";
-import { setTask } from "../../context/redux/slicers/cardSlicer";
+import { setTask, setUser } from "../../context/redux/slicers/cardSlicer";
+import { setUserName } from "../../context/redux/slicers/authSlicer";
 
 const TaskList = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth);
+  console.log("User from Redux = " + user.userName);
+  const cardProps = useSelector((state) => state.card);
 
   const handleTaskSelection = (task) => {
     console.log("Tapped"); // Ensure this logs
     dispatch(setTask(task)); // Update Redux state
+    dispatch(setUserName({ user: user.userName })); // Correct action from authSlicer
+    dispatch(setUser(user.userName));
     console.log("Task in Redux:", task); // Log the task being dispatched
     navigation.goBack(); // Go back to AddTask screen
   };
@@ -34,7 +40,7 @@ const TaskList = () => {
           <View style={styles.itemContainer}>
             <CustomCard
               taskName={item.name}
-              icon="baby"
+              icon={item.icon}
               score={item.points}
               bgColor={"white"}
               onPress={() => handleTaskSelection(item)}

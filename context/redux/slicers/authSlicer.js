@@ -5,6 +5,7 @@ const authSlicer = createSlice({
   initialState: {
     userId: "0",
     userIsAuthenticated: true,
+    userName: "Jordi",
   },
   reducers: {
     authenticated(state, action) {
@@ -15,9 +16,13 @@ const authSlicer = createSlice({
       state.userIsAuthenticated = false;
       state.userId = "0";
     },
+    setUserName(state, action) {
+      state.userName = action.payload.user;
+    },
   },
 });
 
-export const { authenticated, notAuthenticated } = authSlicer.actions;
+export const { authenticated, notAuthenticated, setUserName } =
+  authSlicer.actions;
 
 export default authSlicer.reducer;

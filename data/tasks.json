@@ -2,22 +2,25 @@
   {
     "name": "Full Kitchen",
     "points": "4",
-    "id": "0"
+    "id": "0",
+    "icon": "kitchen-set"
   },
   {
     "name": "Clean dishes",
     "points": "2",
-    "id": "1"
+    "id": "1",
+    "icon": "kitchen-set"
   },
   {
     "name": "Sweep room",
     "points": "1",
-    "id": "2"
+    "id": "2",
+    "icon": "broom"
   },
   {
     "name": "Sweep House",
     "points": "4",
     "id": "3",
-    "icon": "baby"
+    "icon": "broom"
   }
 ]

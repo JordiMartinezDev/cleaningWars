@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import CustomIcon from "./CustomIcon";
 
 const CustomCard = ({ taskName, icon, score, user, bgColor, onPress }) => {
   const navigation = useNavigation();
@@ -26,16 +27,12 @@ const CustomCard = ({ taskName, icon, score, user, bgColor, onPress }) => {
         onPress={onPress}
       >
         <View style={[styles.contentContainer, bgColor]}>
-          <FontAwesome5
-            name={icon}
-            size={48}
-            color="#555"
-            style={styles.icon}
-          />
+          <CustomIcon icon={icon} size={48} color="#555" />
+
           <View style={styles.separator} />
           <View style={styles.infoContainer}>
             <Text style={styles.taskName}>{taskName}</Text>
-            <Text style={styles.user}>By: {user}</Text>
+            <Text style={styles.user}>By: {user ? user : "User"}</Text>
           </View>
           <Text style={styles.score}>{score}</Text>
         </View>

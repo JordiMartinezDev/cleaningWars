@@ -14,55 +14,68 @@ import { Divider } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import CustomCard from "../../components/CustomCard";
 import DatePicker from "../../components/DatePicker";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser as setCardUser } from "../../context/redux/slicers/cardSlicer";
+import { setUserName as setAuthUserName } from "../../context/redux/slicers/authSlicer";
 
 const { height: screenHeight } = Dimensions.get("window");
 
 const AddTask = () => {
   const navigation = useNavigation();
-  const [user, setUser] = useState("Jordi");
-  const [isUserModalVisible, setUserModalVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const cardProps = useSelector((state) => state.card);
+  const reduxDate = useSelector((state) => state.event);
 
-  const showTaskListModal = () => {
-    navigation.navigate("taskList");
-  };
+  const [isUserModalVisible, setUserModalVisible] = useState(false);
+  const [selectedUser, setSelectedUser] = useState("User");
 
-  const showCalendar = () => {
-    navigation.navigate("datePicker");
-  };
+  const openTaskListModal = () => navigation.navigate("taskList");
+  const openCalendar = () => navigation.navigate("datePicker");
 
-  const showUserModal = () => {
-    setUserModalVisible(true);
-  };
-
-  const closeUserModal = () => {
-    setUserModalVisible(false);
-  };
+  const toggleUserModal = () => setUserModalVisible(!isUserModalVisible);
 
   const handleUserSelect = (user) => {
-    console.log("Selected user:", user);
-    setUser(user);
-    // Handle user selection logic here
-    closeUserModal(); // Close the modal after selecting a user
+    setSelectedUser(user);
+    dispatch(setCardUser(user));
+    dispatch(setAuthUserName(user));
+    toggleUserModal(); // Close the modal after selecting a user
   };
 
+  const handleSave = () => {
+    console.log(
+      "Saved user: " +
+        selectedUser +
+        "\nSaved task: " +
+        cardProps.taskName +
+        "\n Date: " +
+        reduxDate.date
+    );
+  };
+
+  const setDate = (date) => {
+    setSelectedDate(date);
+  };
   return (
     <>
-      <AddOrCancelHeader goBack={navigation.goBack} />
+      <AddOrCancelHeader goBack={navigation.goBack} save={handleSave} />
       <Divider />
 
       <View style={styles.container}>
-        <CustomCard {...cardProps} onPress={showTaskListModal} />
+        <CustomCard
+          {...cardProps}
+          user={selectedUser}
+          onPress={openTaskListModal}
+        />
         <Pressable
-          onPress={showUserModal}
+          onPress={toggleUserModal}
           style={({ pressed }) => [
             styles.gridItem,
             pressed && styles.itemPressed,
           ]}
         >
           <View style={styles.innerContainer}>
-            <Text style={styles.text}>{user}</Text>
+            <Text style={styles.text}>{selectedUser}</Text>
           </View>
         </Pressable>
 
@@ -73,12 +86,12 @@ const AddTask = () => {
           visible={isUserModalVisible}
           transparent={true}
           animationType="fade"
-          onRequestClose={closeUserModal}
+          onRequestClose={toggleUserModal}
         >
           <TouchableOpacity
             style={styles.modalOverlay}
             activeOpacity={1}
-            onPressOut={closeUserModal}
+            onPressOut={toggleUserModal}
           >
             <View style={styles.modalContainer}>
               <Text style={styles.modalTitle}>Select a User</Text>
