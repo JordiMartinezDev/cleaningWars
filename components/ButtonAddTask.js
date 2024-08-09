@@ -2,9 +2,11 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 const ButtonAddTask = (onDay) => {
   const navigation = useNavigation();
+  const { userName } = useSelector((state) => state.auth);
 
   function addTaskHandler() {
     navigation.navigate("addTask");
