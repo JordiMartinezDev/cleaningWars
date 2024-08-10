@@ -26,9 +26,10 @@ const AddTask = () => {
 
   const cardProps = useSelector((state) => state.card);
   const reduxDate = useSelector((state) => state.event);
+  const loggedInUserName = useSelector((state) => state.auth.userName);
 
   const [isUserModalVisible, setUserModalVisible] = useState(false);
-  const [selectedUser, setSelectedUser] = useState("User");
+  const [selectedUser, setSelectedUser] = useState(loggedInUserName);
 
   const openTaskListModal = () => navigation.navigate("taskList");
   const openCalendar = () => navigation.navigate("datePicker");

@@ -6,9 +6,10 @@ import { useSelector } from "react-redux";
 
 const ButtonAddTask = (onDay) => {
   const navigation = useNavigation();
-  const { userName } = useSelector((state) => state.auth);
+  const userName = useSelector((state) => state.auth.userName);
 
   function addTaskHandler() {
+    console.log("User logged in trying to add a new task: " + userName);
     navigation.navigate("addTask");
   }
   return (

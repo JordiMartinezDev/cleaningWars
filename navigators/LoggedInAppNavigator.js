@@ -77,7 +77,9 @@ function TabsNavigator() {
 }
 
 const LoggedInAppNavigator = () => {
-  const userId = useSelector((state) => state.auth.userId);
+  const userId = useSelector((state) => state.auth.userName);
+
+  console.log("LoggedINAppNavigator user: " + userId);
 
   return (
     <>
