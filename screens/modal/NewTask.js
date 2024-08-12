@@ -13,53 +13,60 @@ const NewTask = () => {
   const selectedIcon = useSelector((state) => state.icon.iconName);
 
   const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
   const [score, setScore] = useState("");
 
-  const scoreHandler = (score) => setScore(score);
-  const nameHandler = (name) => setName(name);
+  const [nameIsCorrect, setNameIsCorrect] = useState(false);
+  const [scoreIsCorrect, setScoreIsCorrect] = useState(false);
+
   const handleSelectIcon = () => navigation.navigate("selectIcon");
+
+  function nameTextChange(name) {
+    setName(name);
+    if (name.length > 2) setNameIsCorrect(false);
+    else setNameIsCorrect(true);
+  }
+
+  const scoreTextChange = (score) => {
+    setScore(score);
+    if (score !== "") {
+      setScoreIsCorrect(false);
+    } else {
+      setScoreIsCorrect(true);
+    }
+  };
 
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
       <View style={styles.container}>
-        {/* <View style={styles.inputContainer}>
-          <Input
-            textInputConfig={{
-              placeholder: "Name",
-            }}
-            onChangeText={nameHandler}
-            value={name}
-          />
-        </View> */}
         <TextInput
           label="Name"
           value={name}
           mode="outlined"
           outlineColor="green"
-          error={false}
-          onChangeText={(name) => setName(name)}
+          error={nameIsCorrect}
+          onChangeText={nameTextChange}
         />
         <TextInput
-          label="Comments"
-          value={name}
+          label="Comments ( Optional )"
+          value={comment}
           mode="outlined"
           outlineColor="green"
           multiline={true}
           error={false}
-          onChangeText={(name) => setName(name)}
+          onChangeText={(text) => setComment(text)}
         />
         <TextInput
           label="Score"
+          value={score}
           mode="outlined"
           outlineColor="green"
-          multiline={false}
-          error={false}
+          error={scoreIsCorrect}
           keyboardType="decimal-pad"
           maxLength={3}
-          onChangeText={scoreHandler}
-          value={score}
+          onChangeText={scoreTextChange}
         />
 
         <Pressable onPress={handleSelectIcon}>
