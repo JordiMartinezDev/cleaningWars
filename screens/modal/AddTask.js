@@ -17,6 +17,8 @@ import DatePicker from "../../components/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser as setCardUser } from "../../context/redux/slicers/cardSlicer";
 import { setUserName as setAuthUserName } from "../../context/redux/slicers/authSlicer";
+import eventsData from "../../data/events.json";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { height: screenHeight } = Dimensions.get("window");
 
@@ -43,20 +45,33 @@ const AddTask = () => {
     toggleUserModal(); // Close the modal after selecting a user
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    const tasksForSelectedDate = eventsData[reduxDate.date] || [];
+    tasksForSelectedDate.push({
+      name: cardProps.taskName,
+      points: cardProps.score,
+      user: selectedUser,
+      id: "1",
+    });
+
     console.log(
       "Saved user: " +
         selectedUser +
         "\nSaved task: " +
-        cardProps.taskName +
+        JSON.stringify(cardProps, null, 2) +
         "\n Date: " +
         reduxDate.date
     );
+
+    // Save the updated eventsData to AsyncStorage
+    try {
+      await AsyncStorage.setItem("eventsData", JSON.stringify(eventsData));
+      console.log("Events data saved successfully!");
+    } catch (error) {
+      console.error("Error saving events data:", error);
+    }
   };
 
-  const setDate = (date) => {
-    setSelectedDate(date);
-  };
   return (
     <>
       <AddOrCancelHeader goBack={navigation.goBack} save={handleSave} />
