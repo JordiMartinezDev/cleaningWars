@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { useNavigation } from "@react-navigation/native";
-import { Divider } from "react-native-paper";
+import { Divider, TextInput } from "react-native-paper";
 import Input from "../../components/Input";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const NewTask = () => {
       <AddOrCancelHeader goBack={navigation.goBack} />
       <Divider />
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
+        {/* <View style={styles.inputContainer}>
           <Input
             textInputConfig={{
               placeholder: "Name",
@@ -32,19 +32,36 @@ const NewTask = () => {
             onChangeText={nameHandler}
             value={name}
           />
-        </View>
+        </View> */}
+        <TextInput
+          label="Name"
+          value={name}
+          mode="outlined"
+          outlineColor="green"
+          error={false}
+          onChangeText={(name) => setName(name)}
+        />
+        <TextInput
+          label="Comments"
+          value={name}
+          mode="outlined"
+          outlineColor="green"
+          multiline={true}
+          error={false}
+          onChangeText={(name) => setName(name)}
+        />
+        <TextInput
+          label="Score"
+          mode="outlined"
+          outlineColor="green"
+          multiline={false}
+          error={false}
+          keyboardType="decimal-pad"
+          maxLength={3}
+          onChangeText={scoreHandler}
+          value={score}
+        />
 
-        <View style={styles.inputContainer}>
-          <Input
-            textInputConfig={{
-              keyboardType: "decimal-pad",
-              placeholder: "Score (0-10)",
-              maxLength: 2,
-            }}
-            onChangeText={scoreHandler}
-            value={score}
-          />
-        </View>
         <Pressable onPress={handleSelectIcon}>
           <View style={styles.iconBar}>
             <View style={styles.defaultIconAndText}>

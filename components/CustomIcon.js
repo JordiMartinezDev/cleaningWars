@@ -13,7 +13,7 @@ const iconMap = {
   baby: FontAwesome5,
   dog: FontAwesome5,
   toilet: FontAwesome5,
-  trash: FontAwesome5,
+  trash: FontAwesome6,
   tshirt: FontAwesome5,
   checkroom: MaterialIcons,
   iron: MaterialCommunityIcons,
