@@ -199,5 +199,62 @@
     }
   ],
   "2024-08-06": [],
-  "2024-07-31": []
+  "2024-08-13": [
+    {
+      "id": "0",
+      "name": "Clean entire kitchen",
+      "points": "5",
+      "user": "Amanda",
+      "icon": "trash"
+    },
+    {
+      "id": "1",
+      "name": "Different thingy",
+      "points": "5",
+      "user": "Jordi",
+      "icon": "dresser"
+    },
+    {
+      "id": "3",
+      "name": "Clean",
+      "points": "5",
+      "user": "Nil",
+      "icon": "trash"
+    },
+    {
+      "id": "4",
+      "name": "Different",
+      "points": "5",
+      "user": "Paula",
+      "icon": "silverware-clean"
+    },
+    {
+      "id": "5",
+      "name": "Living Room",
+      "points": "5",
+      "user": "Amanda",
+      "icon": "dog"
+    },
+    {
+      "id": "6",
+      "name": "Different ",
+      "points": "5",
+      "user": "Jordi",
+      "icon": "bed"
+    },
+    {
+      "id": "7",
+      "name": "Clean kitchen",
+      "points": "5",
+      "user": "Clara",
+      "icon": "dishwasher"
+    },
+    {
+      "id": "8",
+      "name": "Different thingy",
+      "points": "5",
+      "user": "Paula",
+      "icon": "toilet"
+    }
+  ]
 }

@@ -37,6 +37,10 @@ const Week = () => {
     navigation.navigate("eventDetails");
   }
 
+  // --------- Render Calendar Event Item -----------
+  // --------- Render Calendar Event Item -----------
+  // --------- Render Calendar Event Item -----------
+
   const renderCalendarEvent = (event, isFirst) => {
     const fontSize = isFirst ? 14 : 14;
     const color = isFirst ? "#43515c" : "#43515c";
@@ -49,16 +53,16 @@ const Week = () => {
     if (event.user == "Jordi") userBg.backgroundColor = "#ffb887";
     if (event.user == "Amanda") userBg.backgroundColor = "#ffbadd";
     if (event.user == "Nil") userBg.backgroundColor = "#fff08f";
-    if (event.user == "Clara") userBg.backgroundColor = "b2e1ff";
-    if (event.user == "Paula") userBg.backgroundColor = "d5bdff";
+    if (event.user == "Clara") userBg.backgroundColor = "#b2e1ff";
+    if (event.user == "Paula") userBg.backgroundColor = "#d5bdff";
     if (event.user == "default") userBg.backgroundColor = "#d4ef71";
 
     return (
       <CustomCard
         taskName={event.name}
-        icon="baby"
-        score={5}
-        user="Jordi"
+        icon={event.icon}
+        score={event.points}
+        user={event.user}
         bgColor={userBg}
         onPress={showDetails}
       />
