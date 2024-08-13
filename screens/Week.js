@@ -33,8 +33,12 @@ const Week = () => {
   const [selectedDay, setSelectedDay] = useState(getStartingDate());
   console.log(selectedDay);
 
-  function showDetails() {
-    navigation.navigate("eventDetails");
+  function showDetails(event) {
+    if (!event) {
+      console.error("Event data is undefined or null");
+      return;
+    }
+    navigation.navigate("eventDetails", { event });
   }
 
   // --------- Render Calendar Event Item -----------
@@ -64,7 +68,9 @@ const Week = () => {
         score={event.points}
         user={event.user}
         bgColor={userBg}
-        onPress={showDetails}
+        onPress={() => {
+          showDetails(event);
+        }}
       />
     );
   };
