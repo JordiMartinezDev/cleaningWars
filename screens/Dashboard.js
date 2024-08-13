@@ -4,9 +4,9 @@ import { PieChart } from "react-native-gifted-charts";
 
 // Mock data
 const pieData = [
-  { value: 10, color: "#177AD5", text: "Jordi\n34%" },
-  { value: 30, color: "#79D2DE", text: "Amanda\n44%" },
-  { value: 20, color: "#ED6665", text: "Nil\n24%" },
+  { value: 10, color: "#177AD5", text: "34%" },
+  { value: 30, color: "#79D2DE", text: "44%" },
+  { value: 20, color: "#ED6665", text: "24%" },
 ];
 const houseInfo = {
   name: "Sunnydale House",
@@ -33,13 +33,13 @@ const Dashboard = () => {
           Tasks Completed: {houseInfo.tasksCompleted}
         </Text>
       </View>
-      <Text style={styles.title}>Task Contributions</Text>
+      <Text style={styles.title}>Contribution</Text>
       <View style={styles.chartContainer}>
         <PieChart
           data={pieData}
           donut={false} // Disable donut style for a regular pie chart
           showText
-          textSize={12}
+          textSize={18}
           textColor="#333"
           strokeWidth={6}
           strokeColor="#f9f9f9"
@@ -108,13 +108,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
   },
-  legendContainer: {
-    marginTop: 20,
-  },
+  legendContainer: {},
   legendItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 4,
   },
   legendColor: {
     width: 16,
