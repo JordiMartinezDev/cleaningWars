@@ -40,6 +40,7 @@ const EditableCard = ({
             value={taskName}
             onChangeText={setTaskName}
             placeholder="Task Name"
+            multiline={true}
           />
           <TextInput
             style={styles.user}
