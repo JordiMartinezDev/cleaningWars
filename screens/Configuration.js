@@ -6,7 +6,6 @@ import {
   Keyboard,
   ScrollView,
   Text,
-  Image,
   Switch,
   TouchableOpacity,
 } from "react-native";
@@ -36,25 +35,41 @@ const Configuration = () => {
           <View style={[styles.section, { paddingTop: 4 }]}>
             <Text style={styles.sectionTitle}>Account</Text>
             <View style={styles.sectionBody}>
-              <TouchableOpacity
-                onPress={() => {
-                  /* Handle onPress */
-                }}
-                style={styles.profile}
-              >
-                <Image
-                  alt=""
-                  source={{
-                    uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80",
+              <View style={styles.profileBody}>
+                <TouchableOpacity
+                  onPress={() => {
+                    /* Handle onPress */
                   }}
-                  style={styles.profileAvatar}
-                />
-                <View style={styles.profileBody}>
-                  <Text style={styles.profileName}>John Doe</Text>
-                  <Text style={styles.profileHandle}>john@example.com</Text>
-                </View>
-                <FeatherIcon color="#bcbcbc" name="chevron-right" size={22} />
-              </TouchableOpacity>
+                  style={styles.row}
+                >
+                  <Text style={styles.rowLabel}>Profile</Text>
+
+                  <View style={styles.rowSpacer} />
+
+                  <Text style={styles.rowValue}>User</Text>
+                  <FeatherIcon color="#bcbcbc" name="chevron-right" size={22} />
+                </TouchableOpacity>
+                <Divider />
+                {/* Additional Profile Options */}
+                <TouchableOpacity style={styles.row}>
+                  <Text style={styles.rowLabel}>Home</Text>
+                  <View style={styles.rowSpacer} />
+                  <Text style={styles.rowValue}>Actual Home</Text>
+                  <FeatherIcon color="#bcbcbc" name="chevron-right" size={22} />
+                </TouchableOpacity>
+                <Divider />
+
+                <TouchableOpacity style={styles.row}>
+                  <Text style={styles.rowLabel}>Invite User</Text>
+                  <FeatherIcon color="#bcbcbc" name="chevron-right" size={22} />
+                </TouchableOpacity>
+                <Divider />
+
+                <TouchableOpacity style={styles.row}>
+                  <Text style={styles.rowLabel}>Join Home</Text>
+                  <FeatherIcon color="#bcbcbc" name="chevron-right" size={22} />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
 
@@ -77,27 +92,13 @@ const Configuration = () => {
               <Divider />
               {/* Email Notifications */}
               <View style={styles.row}>
-                <Text style={styles.rowLabel}>Email Notifications</Text>
+                <Text style={styles.rowLabel}>Notifications</Text>
                 <View style={styles.rowSpacer} />
                 <Switch
                   onValueChange={(value) =>
                     setForm({ ...form, emailNotifications: value })
                   }
                   value={form.emailNotifications}
-                  style={{ transform: [{ scaleX: 0.95 }, { scaleY: 0.95 }] }}
-                />
-              </View>
-              <Divider />
-
-              {/* Push Notifications */}
-              <View style={styles.row}>
-                <Text style={styles.rowLabel}>Push Notifications</Text>
-                <View style={styles.rowSpacer} />
-                <Switch
-                  onValueChange={(value) =>
-                    setForm({ ...form, pushNotifications: value })
-                  }
-                  value={form.pushNotifications}
                   style={{ transform: [{ scaleX: 0.95 }, { scaleY: 0.95 }] }}
                 />
               </View>
@@ -127,14 +128,14 @@ const Configuration = () => {
                 }}
                 style={[styles.row]}
               >
-                <Text style={styles.rowLabel}>Terms and Privacy</Text>
+                <Text style={styles.rowLabel}>Terms of Service</Text>
                 <View style={styles.rowSpacer} />
                 <FeatherIcon color="#bcbcbc" name="chevron-right" size={19} />
               </TouchableOpacity>
             </View>
           </View>
 
-          <Text style={styles.contentFooter}>App Version 2.24 #50491</Text>
+          <Text style={styles.contentFooter}>App Version 1.0 </Text>
         </ScrollView>
 
         {/* Logout button at the bottom */}
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   section: {
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   sectionTitle: {
     margin: 8,
@@ -168,7 +169,6 @@ const styles = StyleSheet.create({
   sectionBody: {
     backgroundColor: "#fff",
     borderRadius: 12,
-    paddingVertical: 12,
   },
   profile: {
     flexDirection: "row",
@@ -177,23 +177,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 12,
   },
-  profileAvatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 12,
-  },
   profileBody: {
     flex: 1,
   },
-  profileName: {
-    fontSize: 18,
-    fontWeight: "600",
-  },
   profileHandle: {
-    marginTop: 2,
     fontSize: 16,
-    color: "#858585",
+    color: "#666",
+    marginBottom: 8,
   },
   row: {
     flexDirection: "row",
@@ -205,20 +195,17 @@ const styles = StyleSheet.create({
   },
   rowLabel: {
     fontSize: 16,
-  },
-  rowSpacer: {
-    flex: 1,
+    color: "#333",
   },
   rowValue: {
     fontSize: 16,
     color: "#ababab",
   },
-  rowLabelLogout: {
-    textAlign: "center",
-    color: "#dc2626",
+  rowSpacer: {
+    flex: 1,
   },
+
   contentFooter: {
-    marginTop: 24,
     fontSize: 13,
     textAlign: "center",
     color: "#a69f9f",
