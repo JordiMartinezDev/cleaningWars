@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import { PieChart } from "react-native-gifted-charts";
+import { View, Text, StyleSheet } from "react-native";
 import ChartTimeSelector from "../components/ChartTimeSelector";
+import CustomChart from "../components/CustomChart"; // Import CustomChart
 
-// Mock data
-const pieData = [
-  { value: 10, color: "#177AD5", text: "34%" },
-  { value: 30, color: "#79D2DE", text: "44%" },
-  { value: 20, color: "#ED6665", text: "24%" },
-];
 // Mock data for each time frame
 const weeklyData = [
   { value: 10, color: "#177AD5", text: "34%" },
@@ -37,18 +31,18 @@ const houseInfo = {
 const Dashboard = () => {
   const [chartTimeFrame, setChartTimeFrame] = useState("Weekly");
 
-  const renderLegend = (item) => {
-    return (
-      <View style={styles.legendItem}>
-        <View style={[styles.legendColor, { backgroundColor: item.color }]} />
-        <Text style={styles.legendText}>{item.text}</Text>
-      </View>
-    );
+  // Handle chart time frame selection
+  const handleChartTime = (selectedTimeFrame) => {
+    setChartTimeFrame(selectedTimeFrame);
   };
 
-  function handleChartTime(selectedTimeFrame) {
-    setChartTimeFrame(selectedTimeFrame);
-  }
+  // Select the data based on the current chartTimeFrame
+  const selectedData =
+    chartTimeFrame === "Weekly"
+      ? weeklyData
+      : chartTimeFrame === "Monthly"
+      ? monthlyData
+      : yearlyData;
 
   return (
     <View style={styles.container}>
@@ -59,30 +53,17 @@ const Dashboard = () => {
           Tasks Completed: {houseInfo.tasksCompleted}
         </Text>
       </View>
+
+      {/* Chart Time Selector */}
       <ChartTimeSelector
         onSelect={handleChartTime}
         selectedTime={chartTimeFrame}
       />
+
       <Text style={styles.title}>Contribution</Text>
-      <View style={styles.chartContainer}>
-        <PieChart
-          data={pieData}
-          donut={false} // Disable donut style for a regular pie chart
-          showText
-          textSize={18}
-          textColor="#333"
-          strokeWidth={6}
-          strokeColor="#f9f9f9"
-          innerCircleBorderWidth={8} // Remove inner circle border
-        />
-      </View>
-      <View style={styles.legendContainer}>
-        <FlatList
-          data={pieData}
-          renderItem={({ item }) => renderLegend(item)}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </View>
+
+      {/* CustomChart component handling both chart and legend */}
+      <CustomChart data={selectedData} />
     </View>
   );
 };
@@ -98,11 +79,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 8,
-    elevation: 2, // Shadow effect for Android
-    shadowColor: "#000", // Shadow color for iOS
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
-    shadowOpacity: 0.1, // Shadow opacity for iOS
-    shadowRadius: 4, // Shadow radius for iOS
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   infoTitle: {
     fontSize: 20,
@@ -114,45 +95,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#666",
   },
-  chartContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#333",
     marginBottom: 20,
     textAlign: "center",
-  },
-  centerLabel: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  centerLabelText: {
-    color: "#333",
-    fontSize: 16,
-  },
-  centerLabelValue: {
-    color: "#333",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  legendContainer: {},
-  legendItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 4,
-  },
-  legendColor: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  legendText: {
-    color: "#333",
-    fontSize: 16,
   },
 });
 
