@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   addButton: {
     flex: 1,
     width: "100%",
-    marginBottom: 36,
+    marginBottom: 32,
     justifyContent: "flex-end",
     alignItems: "center",
   },

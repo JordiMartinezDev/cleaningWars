@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#007AFF", // iOS blue button color
     margin: 16,
-    marginBottom: 32,
+    marginBottom: 16,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,

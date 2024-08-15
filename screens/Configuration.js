@@ -36,7 +36,6 @@ export default Configuration;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
     backgroundColor: "#f5f5f5",
   },
   mainContent: {
@@ -44,9 +43,8 @@ const styles = StyleSheet.create({
     // Add other styles for the main content area if needed
   },
   logOutButton: {
-    width: "100%",
     alignItems: "center",
-    padding: 16,
+    paddingBottom: 16,
     backgroundColor: "#f5f5f5", // Ensures consistency with container background
   },
 });

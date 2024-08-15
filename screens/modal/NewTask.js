@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     flex: 1,
-    marginBottom: 24,
+    marginBottom: 32,
     justifyContent: "flex-end",
     alignItems: "center",
   },
