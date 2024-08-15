@@ -68,7 +68,7 @@ const NewTask = () => {
             <View style={styles.iconContent}>
               <CustomIcon icon={selectedIcon} size={24} color={"black"} />
               <Text style={styles.iconText}>
-                {selectedIcon ? selectedIcon : "Select Icon"}
+                {selectedIcon ? "Task icon" : "Select Icon"}
               </Text>
             </View>
             <AntDesign

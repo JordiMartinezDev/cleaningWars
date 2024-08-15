@@ -34,14 +34,12 @@ const AddTask = () => {
   const [selectedUser, setSelectedUser] = useState(loggedInUserName);
 
   const openTaskListModal = () => navigation.navigate("taskList");
-  const openCalendar = () => navigation.navigate("datePicker");
 
   const toggleUserModal = () => setUserModalVisible(!isUserModalVisible);
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
     dispatch(setCardUser(user));
-    dispatch(setAuthUserName(user));
     toggleUserModal(); // Close the modal after selecting a user
   };
 
