@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 16,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
 
     position: "relative", // Ensure positioning context for absolute positioning
     width: screenWidth, // Ensure container is full width of the screen
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     color: "black",
-    top: 8, // Adjust top if needed to align with other elements
+    top: 8,
   },
   backButton: {
     flexDirection: "row",

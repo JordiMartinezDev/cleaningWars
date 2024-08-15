@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: -1,
+    padding: 4,
   },
   itemPressed: {
     backgroundColor: "#e6e6e6", // Slightly darker gray when pressed
