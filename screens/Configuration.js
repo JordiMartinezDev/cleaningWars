@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { notAuthenticated } from "../context/redux/slicers/authSlicer";
@@ -20,7 +21,23 @@ const Configuration = () => {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         {/* Main content area */}
-        <View style={styles.mainContent}>{/* other fields here */}</View>
+        <View style={styles.mainContent}>
+          <View style={styles.profileOptions}>
+            <Text>User id/Profile</Text>
+            <Text>Home</Text>
+            <Text>Invite user</Text>
+            <Text>Join home</Text>
+          </View>
+          <View style={styles.appOptions}>
+            <Text>Language</Text>
+            <Text>Notifications</Text>
+          </View>
+          <View style={styles.info}>
+            <Text>Contact</Text>
+            <Text>Terms of Use</Text>
+            <Text>Privacy policy</Text>
+          </View>
+        </View>
 
         {/* Logout button */}
         <View style={styles.logOutButton}>
@@ -40,11 +57,20 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
-    // Add other styles for the main content area if needed
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  profileOptions: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  appOptions: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   logOutButton: {
     alignItems: "center",
     paddingBottom: 16,
-    backgroundColor: "#f5f5f5", // Ensures consistency with container background
+    backgroundColor: "#f5f5f5",
   },
 });
