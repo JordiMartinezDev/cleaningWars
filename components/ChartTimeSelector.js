@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginVertical: 8,
-    backgroundColor: "#ffffff",
+    marginBottom: 16,
+    backgroundColor: "transparent",
     borderRadius: 8,
     padding: 4,
     elevation: 2, // Shadow effect for Android

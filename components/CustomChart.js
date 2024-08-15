@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   legendContainer: {
-    marginTop: 10,
+    margin: 8,
   },
   legendItem: {
     flexDirection: "row",
