@@ -1,5 +1,10 @@
-import { View, Text, Button, StyleSheet } from "react-native";
 import React from "react";
+import {
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { notAuthenticated } from "../context/redux/slicers/authSlicer";
 import CustomButton from "../components/CustomButton";
@@ -12,9 +17,19 @@ const Configuration = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <CustomButton text="Logout" onPress={handleLogout} />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        {/* Main content area */}
+        <View style={styles.mainContent}>
+          {/* Add your other components here */}
+        </View>
+
+        {/* Logout button */}
+        <View style={styles.logOutButton}>
+          <CustomButton text="Logout" onPress={handleLogout} />
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -23,13 +38,17 @@ export default Configuration;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
+    width: "100%",
     backgroundColor: "#f5f5f5",
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
+  mainContent: {
+    flex: 1,
+    // Add other styles for the main content area if needed
+  },
+  logOutButton: {
+    width: "100%",
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#f5f5f5", // Ensures consistency with container background
   },
 });
