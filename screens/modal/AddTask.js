@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 32,
+    paddingTop: 8,
     backgroundColor: "#f9f9f9",
   },
   gridItem: {

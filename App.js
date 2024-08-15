@@ -12,7 +12,6 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar />
       <Provider store={store}>
         <NavigationContainer>
           <LoginScreen />

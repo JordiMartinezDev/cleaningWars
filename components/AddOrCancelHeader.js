@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Dimensions } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+
+const screenWidth = Dimensions.get("screen").width;
 
 const AddOrCancelHeader = ({ goBack, title }) => {
   return (
@@ -9,7 +11,7 @@ const AddOrCancelHeader = ({ goBack, title }) => {
         <AntDesign name="arrowleft" size={24} color="red" />
         <Text style={styles.backButtonText}>Back</Text>
       </Pressable>
-      {/* <Text style={styles.title}>{title}</Text> */}
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 };
@@ -20,20 +22,27 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    paddingHorizontal: 16,
     backgroundColor: "white",
-    padding: 8,
+
+    position: "relative", // Ensure positioning context for absolute positioning
+    width: screenWidth, // Ensure container is full width of the screen
   },
   title: {
-    backgroundColor: "yellow",
-
+    position: "absolute",
+    left: 0,
+    right: 0,
+    textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
-    textAlign: "center",
+    color: "black",
+    top: 8, // Adjust top if needed to align with other elements
   },
   backButton: {
     flexDirection: "row",
     alignItems: "center",
     padding: 8,
+    zIndex: 1, // Ensure the back button is above other elements
   },
   backButtonText: {
     color: "red",
