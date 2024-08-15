@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
+import ChartTimeSelector from "../components/ChartTimeSelector";
 
 // Mock data
 const pieData = [
@@ -8,9 +9,28 @@ const pieData = [
   { value: 30, color: "#79D2DE", text: "44%" },
   { value: 20, color: "#ED6665", text: "24%" },
 ];
+// Mock data for each time frame
+const weeklyData = [
+  { value: 10, color: "#177AD5", text: "34%" },
+  { value: 30, color: "#79D2DE", text: "44%" },
+  { value: 20, color: "#ED6665", text: "24%" },
+];
+
+const monthlyData = [
+  { value: 20, color: "#177AD5", text: "40%" },
+  { value: 25, color: "#79D2DE", text: "35%" },
+  { value: 15, color: "#ED6665", text: "25%" },
+];
+
+const yearlyData = [
+  { value: 30, color: "#177AD5", text: "50%" },
+  { value: 20, color: "#79D2DE", text: "30%" },
+  { value: 10, color: "#ED6665", text: "20%" },
+];
+
 const houseInfo = {
-  name: "Sunnydale House",
-  members: 4,
+  name: "Jordi&Amanda's House",
+  members: 3,
   tasksCompleted: 120,
 };
 
@@ -33,6 +53,7 @@ const Dashboard = () => {
           Tasks Completed: {houseInfo.tasksCompleted}
         </Text>
       </View>
+      <ChartTimeSelector onSelect={() => {}} />
       <Text style={styles.title}>Contribution</Text>
       <View style={styles.chartContainer}>
         <PieChart
@@ -67,7 +88,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 8,
     padding: 16,
-    marginBottom: 24,
     elevation: 2, // Shadow effect for Android
     shadowColor: "#000", // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
