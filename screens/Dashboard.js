@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import ChartTimeSelector from "../components/ChartTimeSelector";
@@ -35,6 +35,8 @@ const houseInfo = {
 };
 
 const Dashboard = () => {
+  const [chartTimeFrame, setChartTimeFrame] = useState("Weekly");
+
   const renderLegend = (item) => {
     return (
       <View style={styles.legendItem}>
@@ -43,6 +45,10 @@ const Dashboard = () => {
       </View>
     );
   };
+
+  function handleChartTime(selectedTimeFrame) {
+    setChartTimeFrame(selectedTimeFrame);
+  }
 
   return (
     <View style={styles.container}>
@@ -53,7 +59,10 @@ const Dashboard = () => {
           Tasks Completed: {houseInfo.tasksCompleted}
         </Text>
       </View>
-      <ChartTimeSelector onSelect={() => {}} />
+      <ChartTimeSelector
+        onSelect={handleChartTime}
+        selectedTime={chartTimeFrame}
+      />
       <Text style={styles.title}>Contribution</Text>
       <View style={styles.chartContainer}>
         <PieChart

@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const ChartTimeSelector = ({ onSelect }) => {
-  const [selectedTime, setSelectedTime] = useState("Weekly");
-
+const ChartTimeSelector = ({ onSelect, selectedTime }) => {
   const timeFrames = ["Weekly", "Monthly", "Yearly"];
-
-  const handleSelect = (time) => {
-    setSelectedTime(time);
-    onSelect(time);
-  };
 
   return (
     <View style={styles.container}>
       {timeFrames.map((time) => (
         <TouchableOpacity
           key={time}
-          onPress={() => handleSelect(time)}
+          onPress={() => onSelect(time)}
           style={[
             styles.timeOption,
             selectedTime === time && styles.selectedOption,
