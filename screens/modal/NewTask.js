@@ -6,6 +6,7 @@ import { Divider, TextInput } from "react-native-paper";
 import CustomIcon from "../../components/CustomIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useSelector } from "react-redux";
+import CustomButton from "../../components/CustomButton";
 
 const NewTask = () => {
   const navigation = useNavigation();
@@ -68,7 +69,7 @@ const NewTask = () => {
             <View style={styles.iconContent}>
               <CustomIcon icon={selectedIcon} size={24} color={"black"} />
               <Text style={styles.iconText}>
-                {selectedIcon ? "Task icon" : "Select Icon"}
+                {selectedIcon ? "Icon" : "Select Icon"}
               </Text>
             </View>
             <AntDesign
@@ -79,6 +80,9 @@ const NewTask = () => {
             />
           </View>
         </Pressable>
+        <View style={styles.addButton}>
+          <CustomButton text={"Add Task"} onPress={null} />
+        </View>
       </View>
     </>
   );
@@ -116,6 +120,12 @@ const styles = StyleSheet.create({
   },
   arrowIcon: {
     marginLeft: 8,
+  },
+  addButton: {
+    flex: 1,
+    marginBottom: 24,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
 });
 

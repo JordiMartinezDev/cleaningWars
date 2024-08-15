@@ -1,25 +1,15 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
 import React from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
-const AddOrCancelHeader = ({ goBack, save }) => {
-  function savePressed() {
-    save();
-    goBack();
-  }
-
+const AddOrCancelHeader = ({ goBack, title }) => {
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => goBack()}>
-        <View style={styles.button}>
-          <Text style={{ color: "red", fontSize: 16 }}>Back</Text>
-        </View>
+      <Pressable onPress={goBack} style={styles.backButton}>
+        <AntDesign name="arrowleft" size={24} color="red" />
+        <Text style={styles.backButtonText}>Back</Text>
       </Pressable>
-      <Text style={styles.text}>Add new</Text>
-      <Pressable onPress={savePressed}>
-        <View style={styles.button}>
-          <Text style={{ color: "gray", fontSize: 16 }}>Save</Text>
-        </View>
-      </Pressable>
+      {/* <Text style={styles.title}>{title}</Text> */}
     </View>
   );
 };
@@ -29,16 +19,25 @@ export default AddOrCancelHeader;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 8,
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: 24,
-  },
-  button: {
-    marginHorizontal: 16,
+    backgroundColor: "white",
     padding: 8,
+  },
+  title: {
+    backgroundColor: "yellow",
+
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 8,
+  },
+  backButtonText: {
+    color: "red",
+    fontSize: 16,
+    marginLeft: 8,
   },
 });

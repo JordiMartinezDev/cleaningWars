@@ -19,6 +19,8 @@ import { setUser as setCardUser } from "../../context/redux/slicers/cardSlicer";
 import { setUserName as setAuthUserName } from "../../context/redux/slicers/authSlicer";
 import eventsData from "../../data/events.json";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CustomButton from "../../components/CustomButton";
+import { addBusinessDays } from "date-fns";
 
 const { height: screenHeight } = Dimensions.get("window");
 
@@ -61,18 +63,12 @@ const AddTask = () => {
         reduxDate.date
     );
 
-    // Save the updated eventsData to AsyncStorage
-    try {
-      await AsyncStorage.setItem("eventsData", JSON.stringify(eventsData));
-      console.log("Events data saved successfully!");
-    } catch (error) {
-      console.error("Error saving events data:", error);
-    }
+    navigation.goBack();
   };
 
   return (
     <>
-      <AddOrCancelHeader goBack={navigation.goBack} save={handleSave} />
+      <AddOrCancelHeader goBack={navigation.goBack} title="Add task" />
       <Divider />
 
       <View style={styles.container}>
@@ -124,6 +120,9 @@ const AddTask = () => {
             </View>
           </TouchableOpacity>
         </Modal>
+        <View style={styles.addButton}>
+          <CustomButton text={"Add task"} onPress={handleSave} />
+        </View>
       </View>
     </>
   );
@@ -206,6 +205,13 @@ const styles = StyleSheet.create({
   },
   modalOptionPressed: {
     backgroundColor: "#f0f0f0", // Light gray for pressed state
+  },
+  addButton: {
+    flex: 1,
+    width: "100%",
+    marginBottom: 36,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
 });
 
