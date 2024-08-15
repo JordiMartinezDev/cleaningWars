@@ -1,20 +1,29 @@
 import React from "react";
 import { StyleSheet, Text, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import Color from "color"; // Import the color library
 
-const CustomButton = ({ text, onPress }) => {
-  const navigation = useNavigation();
+const CustomButton = ({ text, onPress, bgColor }) => {
+  // Calculate the pressed background color dynamically
+  const getButtonStyles = (bgColor) => {
+    const baseColor = bgColor || "#007AFF";
+    const darkenedColor = Color(baseColor).darken(0.2).hex(); // Darken by 20%
 
-  const handlePress = () => {
-    if (onPress) {
-      onPress();
-    }
+    return {
+      button: {
+        backgroundColor: baseColor,
+      },
+      buttonPressed: {
+        backgroundColor: darkenedColor,
+      },
+    };
   };
+
+  const { button, buttonPressed } = getButtonStyles(bgColor);
 
   return (
     <Pressable
-      onPress={handlePress}
-      style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+      onPress={onPress}
+      style={({ pressed }) => [styles.button, button, pressed && buttonPressed]}
     >
       <Text style={styles.buttonText}>{text}</Text>
     </Pressable>
@@ -24,11 +33,10 @@ const CustomButton = ({ text, onPress }) => {
 const styles = StyleSheet.create({
   button: {
     height: 50,
-    width: "100%", // Make the button wider, adjust as needed
+    width: "90%", // Make the button wider, adjust as needed
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#007AFF", // iOS blue button color
-    margin: 16,
+    margin: 1,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -40,9 +48,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "600",
-  },
-  buttonPressed: {
-    backgroundColor: "#005BBB", // Darker blue when pressed
   },
 });
 

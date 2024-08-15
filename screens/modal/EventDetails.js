@@ -1,6 +1,8 @@
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, Dimensions } from "react-native";
 import React from "react";
 import EditableCard from "../../components/EditableEventCard";
+import CustomCard from "../../components/CustomCard";
+import CustomButton from "../../components/CustomButton";
 
 const EventDetails = ({ route, navigation }) => {
   const event = route?.params?.event;
@@ -11,16 +13,22 @@ const EventDetails = ({ route, navigation }) => {
     // You might want to update your events list or send the updated data to a backend
     navigation.goBack(); // Dismiss the modal after saving
   };
+
+  const handleDelete = () => {
+    console.log("deleted");
+  };
   return (
     <View style={styles.container}>
-      <EditableCard
-        initialTask={event.name}
-        initialScore={event.points}
-        initialUser={event.user}
+      <CustomCard
+        taskName={event.name}
         icon={event.icon}
+        score={event.points}
+        user={event.user}
+        bgColor={"white"}
         onSave={handleSave}
       />
-      <Button onPress={() => navigation.goBack()} title="Dismiss" />
+      <CustomButton text={"Delete"} onPress={handleDelete} bgColor={"red"} />
+      <CustomButton onPress={() => navigation.goBack()} text="Back" />
     </View>
   );
 };

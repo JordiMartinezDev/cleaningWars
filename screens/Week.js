@@ -31,7 +31,8 @@ const Week = () => {
   const navigation = useNavigation();
 
   const [selectedDay, setSelectedDay] = useState(getStartingDate());
-  console.log(selectedDay);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   function showDetails(event) {
     if (!event) {
