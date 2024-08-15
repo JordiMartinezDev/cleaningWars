@@ -1,13 +1,90 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import React from "react";
-import TaskList from "./modal/TaskList";
+import tasks from "../data/tasks.json";
+import { Divider } from "react-native-paper";
+import CustomCard from "../components/CustomCard";
+import { useNavigation } from "@react-navigation/native";
 
 const Tasks = () => {
+  const navigation = useNavigation();
+  function handleEditTask(task) {
+    console.log("I want to edit task: " + task);
+  }
+  const handleNewTask = () => {
+    navigation.navigate("newTask");
+  };
   return (
-    <View>
-      <TaskList />
+    <View style={styles.container}>
+      <Divider />
+
+      <FlatList
+        data={tasks}
+        renderItem={({ item }) => (
+          <View style={styles.itemContainer}>
+            <CustomCard
+              taskName={item.name}
+              icon={item.icon}
+              score={item.points}
+              bgColor={"white"}
+              onPress={() => {}}
+            />
+          </View>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.listContent}
+      />
+      <Pressable
+        onPress={handleNewTask}
+        style={({ pressed }) => [
+          styles.newTaskButton,
+          pressed && styles.buttonPressed,
+        ]}
+      >
+        <Text style={styles.buttonText}>Add New</Text>
+      </Pressable>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#f9f9f9", // Light gray background
+  },
+  listContent: {
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+  },
+  itemContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: -1,
+  },
+  itemPressed: {
+    backgroundColor: "#e6e6e6", // Slightly darker gray when pressed
+  },
+  newTaskButton: {
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#007AFF", // iOS blue button color
+    margin: 16,
+    marginBottom: 32,
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  buttonPressed: {
+    backgroundColor: "#005BBB", // Darker blue when pressed
+  },
+});
 
 export default Tasks;

@@ -22,5 +22,53 @@
     "points": "4",
     "id": "3",
     "icon": "broom"
+  },
+  {
+    "name": "Full Kitchen",
+    "points": "4",
+    "id": "4",
+    "icon": "kitchen-set"
+  },
+  {
+    "name": "Clean dishes",
+    "points": "2",
+    "id": "5",
+    "icon": "kitchen-set"
+  },
+  {
+    "name": "Sweep room",
+    "points": "1",
+    "id": "6",
+    "icon": "broom"
+  },
+  {
+    "name": "Sweep House",
+    "points": "4",
+    "id": "7",
+    "icon": "broom"
+  },
+  {
+    "name": "Full Kitchen",
+    "points": "4",
+    "id": "8",
+    "icon": "kitchen-set"
+  },
+  {
+    "name": "Clean dishes",
+    "points": "2",
+    "id": "9",
+    "icon": "kitchen-set"
+  },
+  {
+    "name": "Sweep room",
+    "points": "1",
+    "id": "10",
+    "icon": "broom"
+  },
+  {
+    "name": "Sweep House",
+    "points": "4",
+    "id": "11",
+    "icon": "broom"
   }
 ]
