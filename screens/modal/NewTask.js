@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Dimensions,
+  Platform,
+} from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { useNavigation } from "@react-navigation/native";
 import { Divider, TextInput } from "react-native-paper";
@@ -7,6 +14,9 @@ import CustomIcon from "../../components/CustomIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useSelector } from "react-redux";
 import CustomButton from "../../components/CustomButton";
+import CustomCard from "../../components/CustomCard";
+
+const screenWidth = Dimensions.get("window").width;
 
 const NewTask = () => {
   const navigation = useNavigation();
@@ -33,56 +43,68 @@ const NewTask = () => {
 
   return (
     <>
-      <AddOrCancelHeader goBack={navigation.goBack} />
+      <AddOrCancelHeader goBack={navigation.goBack} title="New task" />
       <Divider />
       <View style={styles.container}>
-        <TextInput
-          label="Name"
-          value={name}
-          mode="outlined"
-          outlineColor="green"
-          error={nameIsCorrect}
-          onChangeText={nameTextChange}
-        />
-        <TextInput
-          label="Comments ( Optional )"
-          value={comment}
-          mode="outlined"
-          outlineColor="green"
-          multiline={true}
-          error={false}
-          onChangeText={(text) => setComment(text)}
-        />
-        <TextInput
-          label="Score"
-          value={score}
-          mode="outlined"
-          outlineColor="green"
-          error={scoreIsCorrect}
-          keyboardType="decimal-pad"
-          maxLength={3}
-          onChangeText={scoreTextChange}
-        />
-
-        <Pressable onPress={handleSelectIcon}>
-          <View style={styles.iconBar}>
-            <View style={styles.iconContent}>
-              <CustomIcon icon={selectedIcon} size={24} color={"black"} />
-              <Text style={styles.iconText}>
-                {selectedIcon ? "Icon" : "Select Icon"}
-              </Text>
-            </View>
-            <AntDesign
-              name="right"
-              size={16}
-              color="gray"
-              style={styles.arrowIcon}
-            />
-          </View>
-        </Pressable>
-        <View style={styles.addButton}>
-          <CustomButton text={"Add Task"} onPress={null} />
+        <View style={styles.card}>
+          <CustomCard
+            taskName="Kitchen"
+            icon="baby"
+            score={5}
+            user="Jordi"
+            color="#f47d2e"
+            bgColor={null}
+          />
         </View>
+        <View style={styles.itemsForm}>
+          <TextInput
+            label="Name"
+            value={name}
+            mode="outlined"
+            outlineColor="gray"
+            error={nameIsCorrect}
+            onChangeText={nameTextChange}
+          />
+          <TextInput
+            label="Comments ( Optional )"
+            value={comment}
+            mode="outlined"
+            outlineColor="gray"
+            multiline={true}
+            error={false}
+            onChangeText={(text) => setComment(text)}
+          />
+          <TextInput
+            label="Score"
+            value={score}
+            mode="outlined"
+            outlineColor="gray"
+            error={scoreIsCorrect}
+            keyboardType="decimal-pad"
+            maxLength={3}
+            onChangeText={scoreTextChange}
+          />
+
+          <Pressable onPress={handleSelectIcon}>
+            <View style={styles.iconBar}>
+              <View style={styles.iconContent}>
+                <CustomIcon icon={selectedIcon} size={24} color={"black"} />
+                <Text style={styles.iconText}>
+                  {selectedIcon ? "Icon" : "Select Icon"}
+                </Text>
+              </View>
+              <AntDesign
+                name="right"
+                size={16}
+                color="gray"
+                style={styles.arrowIcon}
+              />
+            </View>
+          </Pressable>
+        </View>
+      </View>
+      <View style={styles.addButton}>
+        <CustomButton text={"Add Task"} onPress={null} />
       </View>
     </>
   );
@@ -93,6 +115,27 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: "#f9f9f9",
+    paddingTop: 8,
+    alignItems: "center",
+  },
+  card: {
+    marginHorizontal: 8,
+    marginVertical: 16,
+    width: screenWidth * 0.9,
+    alignItems: "center",
+  },
+  itemsForm: {
+    width: "90%",
+    backgroundColor: "white",
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 3,
+    elevation: 2,
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   iconBar: {
     flexDirection: "row",
