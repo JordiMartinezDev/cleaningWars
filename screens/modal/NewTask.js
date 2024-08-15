@@ -3,10 +3,9 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import AddOrCancelHeader from "../../components/AddOrCancelHeader";
 import { useNavigation } from "@react-navigation/native";
 import { Divider, TextInput } from "react-native-paper";
-import Input from "../../components/Input";
+import CustomIcon from "../../components/CustomIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useSelector } from "react-redux";
-import CustomIcon from "../../components/CustomIcon";
 
 const NewTask = () => {
   const navigation = useNavigation();
@@ -23,17 +22,12 @@ const NewTask = () => {
 
   function nameTextChange(name) {
     setName(name);
-    if (name.length > 2) setNameIsCorrect(false);
-    else setNameIsCorrect(true);
+    setNameIsCorrect(name.length <= 2);
   }
 
   const scoreTextChange = (score) => {
     setScore(score);
-    if (score !== "") {
-      setScoreIsCorrect(false);
-    } else {
-      setScoreIsCorrect(true);
-    }
+    setScoreIsCorrect(score === "");
   };
 
   return (
@@ -71,13 +65,18 @@ const NewTask = () => {
 
         <Pressable onPress={handleSelectIcon}>
           <View style={styles.iconBar}>
-            <View style={styles.defaultIconAndText}>
-              <Text style={styles.placeholderText}>Select Icon</Text>
-              <CustomIcon icon={selectedIcon} size={32} color={"black"} />
+            <View style={styles.iconContent}>
+              <CustomIcon icon={selectedIcon} size={24} color={"black"} />
+              <Text style={styles.iconText}>
+                {selectedIcon ? selectedIcon : "Select Icon"}
+              </Text>
             </View>
-            <View style={styles.icon}>
-              <AntDesign name="right" size={16} color="gray" />
-            </View>
+            <AntDesign
+              name="right"
+              size={16}
+              color="gray"
+              style={styles.arrowIcon}
+            />
           </View>
         </Pressable>
       </View>
@@ -91,61 +90,31 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#f9f9f9",
   },
-  inputContainer: {
-    marginVertical: 8,
-    backgroundColor: "white",
-    borderRadius: 10,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
-    height: 50,
-  },
-  smallInputContainer: {
-    marginVertical: 8,
-    backgroundColor: "white",
-    borderRadius: 10,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 2,
-    height: 50,
-    width: "30%",
-  },
   iconBar: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     backgroundColor: "white",
     marginVertical: 8,
     borderRadius: 10,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: 12,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
-    height: 50,
   },
-  placeholderText: {
-    color: "#C7C7CD", // Similar to placeholder text color
-    fontSize: 20, // Same font size as input placeholders
-    paddingHorizontal: 8,
-  },
-  defaultIconAndText: {
-    flex: 1,
+  iconContent: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    flex: 1,
   },
-  icon: {
+  iconText: {
+    fontSize: 16,
+    color: "#333",
+    marginLeft: 8,
+  },
+  arrowIcon: {
     marginLeft: 8,
   },
 });

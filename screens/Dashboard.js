@@ -5,21 +5,21 @@ import CustomChart from "../components/CustomChart"; // Import CustomChart
 
 // Mock data for each time frame
 const weeklyData = [
-  { value: 10, color: "#177AD5", text: "34%" },
-  { value: 30, color: "#79D2DE", text: "44%" },
-  { value: 20, color: "#ED6665", text: "24%" },
+  { value: 10, color: "#ffbadd", text: "34%" },
+  { value: 30, color: "#ffb887", text: "44%" },
+  { value: 20, color: "#fff08f", text: "24%" },
 ];
 
 const monthlyData = [
-  { value: 20, color: "#177AD5", text: "40%" },
-  { value: 25, color: "#79D2DE", text: "35%" },
-  { value: 15, color: "#ED6665", text: "25%" },
+  { value: 20, color: "#ffbadd", text: "40%" },
+  { value: 25, color: "#ffb887", text: "35%" },
+  { value: 15, color: "#fff08f", text: "25%" },
 ];
 
 const yearlyData = [
-  { value: 30, color: "#177AD5", text: "50%" },
-  { value: 20, color: "#79D2DE", text: "30%" },
-  { value: 10, color: "#ED6665", text: "20%" },
+  { value: 30, color: "#ffbadd", text: "50%" },
+  { value: 20, color: "#ffb887", text: "30%" },
+  { value: 10, color: "#fff08f", text: "20%" },
 ];
 
 const houseInfo = {
