@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: "#ffffff",
     borderRadius: 8,
-    padding: 16,
+    padding: 4,
     elevation: 2, // Shadow effect for Android
     shadowColor: "#000", // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS

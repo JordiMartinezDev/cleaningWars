@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
   infoCard: {
     backgroundColor: "#ffffff",
     borderRadius: 8,
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     elevation: 2, // Shadow effect for Android
     shadowColor: "#000", // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
