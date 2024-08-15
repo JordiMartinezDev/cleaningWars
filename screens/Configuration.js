@@ -20,9 +20,7 @@ const Configuration = () => {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         {/* Main content area */}
-        <View style={styles.mainContent}>
-          {/* Add your other components here */}
-        </View>
+        <View style={styles.mainContent}>{/* other fields here */}</View>
 
         {/* Logout button */}
         <View style={styles.logOutButton}>
