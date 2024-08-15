@@ -7,12 +7,26 @@ import { useNavigation } from "@react-navigation/native";
 
 const Tasks = () => {
   const navigation = useNavigation();
-  function handleEditTask(task) {
-    console.log("I want to edit task: " + task);
-  }
+
   const handleNewTask = () => {
     navigation.navigate("newTask");
   };
+  const handleEditTask = (event) => {
+    console.log("I want to edit task: " + event.name);
+    if (!event) {
+      console.error("Event data is undefined or null");
+      return;
+    }
+    navigation.navigate("eventDetails", { event });
+  };
+
+  function editTask(event) {
+    if (!event) {
+      console.error("Event data is undefined or null");
+      return;
+    }
+    navigation.navigate("eventDetails", { event });
+  }
   return (
     <View style={styles.container}>
       <Divider />
@@ -26,7 +40,7 @@ const Tasks = () => {
               icon={item.icon}
               score={item.points}
               bgColor={"white"}
-              onPress={() => {}}
+              onPress={() => handleEditTask(item)}
             />
           </View>
         )}
